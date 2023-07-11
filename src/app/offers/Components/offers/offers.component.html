@@ -1,0 +1,29 @@
+<h1 style="text-align: right;">: العــروض</h1>
+<hr>
+
+<div class="container" *ngIf="offers">
+
+
+<div class="alert" role="alert"  *ngFor="let offer of offers">
+  <p>
+    لقد أرسل لك {{ offer.buyerID }} : <br>
+    الرسالة : {{ offer.message }} <br>
+    السعر : {{ offer.price }}
+  </p>
+  <div>
+    <span>
+      <button type="button" class="btn btn-success" (click)="startChat(offer)
+      ">Ok</button>
+    </span>
+    <span>
+      <button type="button" class="btn btn-danger" (click)="deleteOffer(offer.id)"
+      >Cancel</button>
+    </span>
+  </div>
+</div>
+
+</div>
+<div class="container" *ngIf="offers.length<=0">
+  <div style="text-align: center; font-weight: bolder; font-size: 7rem;" class="h2">لا يوجد بيانات</div>
+  <img src="../../../../assets/Images/notFound.jpg" width="70%" height="600px" alt="" srcset="">
+</div>

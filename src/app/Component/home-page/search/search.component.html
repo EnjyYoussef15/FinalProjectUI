@@ -1,0 +1,86 @@
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-inner ">
+
+    <div class="carousel-item active carsol">
+      <img src="https://hensleyhomes.com/wp-content/uploads/2022/04/IMG_6215-1-1536x1040.jpg" class="d-block w-100"
+        alt="...">
+
+      <div class="carousel-caption d-block caption">
+        <h2 style="font-size: 35px; color: white;">أبحث عن منزلك الجديد</h2>
+        <p style="color: white;">هنا يمكنك المقارنه وايجاد العديد من الاقتراحات تبعا لأولوياتك</p>
+
+        <form class="container" action="" style="background-color: antiquewhite; border-radius: 15px;">
+          <br>
+          <div class="row">
+            <!-- <button class="btn text-light-emphasis col-2" type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="100" fill="orange" class="bi bi-search"
+                viewBox="0 0 15 15">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg></button> -->
+            <mat-form-field class="col-2">
+              <mat-label>Type</mat-label>
+              <mat-select [(value)]="UnitTypeselected" [formControl]="unitControl">
+                <mat-option>--</mat-option>
+                <mat-option (click)="displayFn()" *ngFor="let unit of UnitTypes" [value]="unit.value ">
+                  {{unit.label}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-error *ngIf="unitControl.hasError('required')">حدد النوع من اجل بحث افضل</mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field class="col-2">
+              <mat-label>price</mat-label>
+              <mat-select [(value)]="UnitPRICEselected" [formControl]="priceControl">
+                <mat-option>--</mat-option>
+                <mat-option (click)="displayFn()" *ngFor="let price of PriceTypes" [value]="price.value ">
+                  {{price.label}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-error *ngIf="priceControl.hasError('required')">حدد السعر من اجل بحث افضل</mat-error> -->
+
+            </mat-form-field>
+
+            &nbsp;
+            <mat-form-field class="col-3">
+              <mat-label>Area</mat-label>
+              <mat-select [(value)]="UnitAreaselected" [formControl]="areaControl">
+                <mat-option>--</mat-option>
+                <mat-option (click)="displayFn()" *ngFor="let animal of area" [value]="animal.value ">
+                  {{animal.label}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-error *ngIf="areaControl.hasError('required')">حدد المساحه من اجل بحث افضل</mat-error> -->
+
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field class="col-3">
+              <input matInput placeholder="Search for a Government" [matAutocomplete]="auto" [formControl]="cityControl"
+                (change)="onGovernorateChange($event)">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+                <mat-option *ngFor="let option of jsonData " [value]="option.governorate_name_ar">
+                  {{ option.governorate_name_ar }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <button mat-raised-button class="col-2" style="border-color: black;
+            top: 15px;
+            border-radius: 20px;
+            width: 15%;" type="submit">
+              <a *ngIf="!UnitTypeselectedOption && !UnitAreaselectedOption && !UnitTypeselectedOption"
+                href="/Unit/Allunits/{{cityonlyy}}">
+                Search </a>
+              <a *ngIf="UnitTypeselectedOption || UnitAreaselectedOption || UnitTypeselectedOption"
+                href="/Unit/Allunits/{{UnitAreaselectedOption}}/{{UnitTypeselectedOption}}/{{UnitTypeselectedOption}}/{{cityselectedOption}}">
+                Search </a>
+            </button>
+          </div>
+          <br>
+        </form>
+        <br>
+      </div>
+    </div>
+
+  </div>
+</div>
