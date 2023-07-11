@@ -1,41 +1,4 @@
-/* .gallery-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  position: relative;
-}
-
-
-.main{
-  width: 450px;
-  height: 600px;
-}
-.icon{
-  position: absolute;
-}
-.thumbnail-images {
-  display: flex;
-  gap: 0.5rem;
-  position: absolute;
-  bottom: 0px;
-}
-
-.thumbnail img {
-  width: 70%;
-  height:70%;
-  max-width: 100px;
-  cursor: pointer;
-  border: solid #FF8000 2px;
-}
-
-.material-icons{
-position: relative;
-top: 0px;
-}
- */
-
- .container-fluid{
+.container-fluid{
   text-align: center;
 }
 .card{
@@ -89,7 +52,7 @@ a{
   padding: 0;
 }
 small{
-  font-size: .7rem;
+  font-size: 20px;
   color: #4b4b4b;
   font-weight: bold;
 }
@@ -122,7 +85,7 @@ height: 50%;
 .price .price-text{
   color: #131313;
   font-weight: bold!important;
-  font-size: large;
+  font-size: 20px;
 }
 .price .unitType{
   color: #131313;
@@ -134,7 +97,9 @@ height: 50%;
 .pagination-next{
   display: none !important;
 }
-li .current{
+
+li .current
+{
   background-color: #ff8000 !important;
 }
 .ngx-pagination .current {
@@ -147,4 +112,10 @@ li .current{
 }
 
 
-
+.map[_ngcontent-ng-c1181312641], .heart[_ngcontent-ng-c1181312641] {
+  background-color: #e2e2e2;
+  padding: 1.6% 1%;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}

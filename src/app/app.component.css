@@ -1,5 +1,6 @@
 *{
   font-size: 20px !important;
+  opacity: 100%;
 }
 .navBarSearch{
   display: inline;
@@ -24,8 +25,8 @@ ul{
 }
 a{
   list-style: none;
-  float: left;
-text-align: center;
+  float: right;
+  text-align: center;
   padding-right: 20px;
 }
 a{
@@ -63,7 +64,9 @@ background-color: #E2E2E2;
 }
 
 
-
+*[_ngcontent-ng-c1114982685] {
+  font-size: 23px !important;
+}
 /* .signin{
   position: absolute;
   left: 15%;

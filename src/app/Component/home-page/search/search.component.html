@@ -2,8 +2,7 @@
   <div class="carousel-inner ">
 
     <div class="carousel-item active carsol">
-      <img src="https://hensleyhomes.com/wp-content/uploads/2022/04/IMG_6215-1-1536x1040.jpg" class="d-block w-100"
-        alt="...">
+      <img src="../assets/Images/1.jpg" class="d-block w-100" alt="...">
 
       <div class="carousel-caption d-block caption">
         <h2 style="font-size: 35px; color: white;">أبحث عن منزلك الجديد</h2>
@@ -58,7 +57,7 @@
               <input matInput placeholder="Search for a Government" [matAutocomplete]="auto" [formControl]="cityControl"
                 (change)="onGovernorateChange($event)">
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
-                <mat-option *ngFor="let option of jsonData " [value]="option.governorate_name_ar">
+                <mat-option *ngFor="let option of jsonData" [value]="option.governorate_name_ar">
                   {{ option.governorate_name_ar }}
                 </mat-option>
               </mat-autocomplete>
@@ -68,11 +67,11 @@
             top: 15px;
             border-radius: 20px;
             width: 15%;" type="submit">
-              <a *ngIf="!UnitTypeselectedOption && !UnitAreaselectedOption && !UnitTypeselectedOption"
-                href="/Unit/Allunits/{{cityonlyy}}">
+              <a *ngIf="!UnitTypeselectedOption && !UnitAreaselectedOption && !UnitPRICEselectedOption"
+                href="/unit/Allunits/{{cityonlyy}}">
                 Search </a>
               <a *ngIf="UnitTypeselectedOption || UnitAreaselectedOption || UnitTypeselectedOption"
-                href="/Unit/Allunits/{{UnitAreaselectedOption}}/{{UnitTypeselectedOption}}/{{UnitTypeselectedOption}}/{{cityselectedOption}}">
+                href="/unit/Allunits/{{UnitAreaselectedOption}}/{{UnitTypeselectedOption}}/{{UnitPRICEselectedOption}}/{{cityselectedOption}}">
                 Search </a>
             </button>
           </div>

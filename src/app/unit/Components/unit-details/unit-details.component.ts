@@ -8,8 +8,10 @@ import { OffersService } from 'src/app/offers/Services/offers.service';
 @Component({
   selector: 'app-unit-details',
   templateUrl: './unit-details.component.html',
-  styleUrls: ['./unit-details.component.css']
+  styleUrls: ['./unit-details.component.css'],
+
 })
+
 export class UnitDetailsComponent implements OnInit{
 
     ////////// For Offer ///////////////

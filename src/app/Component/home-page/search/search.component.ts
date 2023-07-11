@@ -33,8 +33,9 @@ export class SearchComponent implements OnInit
 
   ngOnInit(): void
    {
+
     this.filteredOptions = this.cityControl.valueChanges.pipe(
-      startWith(""),
+
       map(value=> value!= null ? this._filter(value) : null ));
 
       this.getData();
@@ -54,6 +55,7 @@ onGovernorateChange(event:any): void
             this.jsonData=value;
             console.log(this.jsonData);
 
+
           },
         });
       }
@@ -63,8 +65,8 @@ onGovernorateChange(event:any): void
 
   private _filter(value: string): string[]
   {
-    const filterValue = value.toLowerCase();
-    return this.jsonData.filter(option => option.toLowerCase().includes(filterValue));
+    const filterValue = value;
+    return this.jsonData.filter(option => option.governorate_name_ar.includes(filterValue));
   }
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {

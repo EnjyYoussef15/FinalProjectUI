@@ -12,22 +12,35 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridList, MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { SelectDurationComponent } from './Components/add-unit/select-duration/select-duration.component';
 import { UnitDetailsComponent } from './Components/unit-details/unit-details.component';
+import { UnitBuildingComponent } from './Components/unit-building/unit-building.component';
+import { UnitCardComponent } from '../Component/home-page/unit-card/unit-card.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 const routes:Routes=[
   {path: 'add', component: AddUnitComponent,canActivate: [userAuthGGuard]},
   {path:'selectDuration', component: SelectDurationComponent},
-  {path:'det/:id', component: UnitDetailsComponent}
+  {path:'det/:id', component: UnitDetailsComponent},
+  {path: 'Allunits/:cityonly', component: UnitBuildingComponent, title: 'Unit List'},
+  {path: 'Allunits/:area/:unitType/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
+
 ];
 
 @NgModule({
   declarations: [
     AddUnitComponent,
     SelectDurationComponent,
-    UnitDetailsComponent
+    UnitDetailsComponent,
+    UnitBuildingComponent,
+
+
   ],
   imports: [
-    CommonModule,
+
+  CommonModule,
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
@@ -35,11 +48,18 @@ const routes:Routes=[
     MatInputModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatIconModule,
-     MatFormFieldModule,
-      MatInputModule, FormsModule,
-       MatButtonModule,
-    RouterModule.forChild(routes)
+    MatFormFieldModule,
+    FormsModule,
+    MatTableModule,
+    NgxPaginationModule,
+
+    MatCardModule,
+    RouterModule.forChild(routes),
+
+
+
+
+
   ]
 })
 export class UnitModule { }

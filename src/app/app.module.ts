@@ -29,6 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -61,7 +63,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgIf,
     MatInputModule,
     MatPaginatorModule,
-
+    MatTableModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

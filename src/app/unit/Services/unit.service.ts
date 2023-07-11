@@ -59,6 +59,12 @@ export class UnitService {
 
     getbySearch(area?:number,unittype?:UnitType,pricetype?:TypePrice,government?:string):Observable<UnitCard[]>
   {
-    return this.http.get<UnitCard[]>(this.baseUrl+'/api/Unit/'+area+'/'+unittype+'/'+pricetype+'/'+government)
+    return this.http.get<UnitCard[]>(this.baseUrl+'Unit/search/'+area+'/'+unittype+'/'+pricetype+'/'+government)
+  }
+
+  getByCity(city:string)
+  {
+    return this.http.get<UnitCard[]>(this.baseUrl+'Unit/'+city);
+
   }
 }

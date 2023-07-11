@@ -29,6 +29,12 @@ registerClick(){
   this.router.navigate(['/user/register'])
 }
 
+logout(){
+  this.router.navigate(['']);
+  localStorage.removeItem('token');
+  console.log('token')
+}
+
 showChat:boolean=false;
 clickHere(){
   this.showChat= !this.showChat;
