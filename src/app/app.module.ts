@@ -42,8 +42,9 @@ import { MatCardModule } from '@angular/material/card';
     UnitCardComponent,
     CategoryComponent,
     CityComponent,
-    SearchComponent
+    SearchComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -67,6 +68,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

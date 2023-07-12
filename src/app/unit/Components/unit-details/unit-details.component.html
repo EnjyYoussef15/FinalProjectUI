@@ -1,7 +1,8 @@
 <div class="container text-center" style="margin-top: 70px;" dir="ltr">
   <div class="row">
-    <div class="col-6">
-      <br>
+
+    <div class="col-lg-6">
+      Section 1
       <div class="gallery-container">
         <div class="main-image">
           <a [href]="unitDetails.location" target="_blank">
@@ -10,34 +11,35 @@
               alt="">
           </a>
           <img class="main" [src]="selectedImage" alt="Main Image" />
-          <div class="thumbnail-images">
 
-            <div *ngFor="let imagePath of unitDetails.unitImagesString!.split(','); let i = index" class="thumbnail"
+          <div class="thumbnail-images">
+            <div *ngFor="let imagePath of unitDetails.unitImagesString?.split(','); let i = index" class="thumbnail"
               (click)="selectImage(i)">
               <ng-container *ngIf="imagePath">
+                <!-- <img [src]="imagePath" alt="Thumbnail Image {{ i + 1 }}"> -->
                 <img [src]="'http://localhost:5219/UnitImages/'+imagePath" alt="Thumbnail Image {{ i + 1 }}">
               </ng-container>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
 
-
-    <div class="col-6">
-      <br>
+    <div class="col-lg-6">
+      Section 2
       <h1 style="text-align: right;">{{unitDetails.name}}</h1>
-      <h3 style="text-align: right;">{{unitDetails.address}} , {{unitDetails.city}} , {{unitDetails.governamnet}} </h3>
+      <h2 style="text-align: right;">{{unitDetails.address}} , {{unitDetails.city}} , {{unitDetails.governamnet}}
+      </h2>
       <div style="text-align: right;">
         <span class="btn  disabled" style="color:white ; background-color: #FF8000;">{{unitDetails.price |
           currency:'EGP'}}</span>
       </div><br>
-      <p style="text-align: right;">مواصفات الوحدة</p>
+      <h4 style="text-align: right; ">مواصفات الوحدة</h4>
+      <hr>
 
-
-      <table class="table table-striped" style="text-align: center;">
-        <thead>
+      <table class="table table-hover" style="text-align: center; direction: ltr;">
+        <tbody>
           <tr>
             <td>{{unitDetails.floorNumber}}</td>
             <th scope="col">رقم الدور</th>
@@ -77,53 +79,67 @@
           <tr>
             <td>{{unitDetails.capacityBathRoom}}</td>
             <th scope="col">عدد الحمامات</th>
+          </tr>
 
-            <!-- </tr>
-            <td>{{unitDetails.date | date}}</td>
-            <th scope="col">التاريخ</th> -->
-        </thead>
+        </tbody>
 
       </table>
     </div>
+
+
   </div>
 
   <div class="row">
-    <div class="col-6">
-
-    </div>
-    <div class="col-6">
-      <h1 style="text-align: right;">: عن الوحدة</h1>
-      <div class="container">
-        <p style="direction: rtl;">
-          {{unitDetails.description}}
-        </p>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 ">
+      <br>
+      <div class="aboutUnit">
+        <br>
+        <div>
+          <h3 style="text-align: center;"> عن الوحدة </h3>
+          <p style="direction: rtl; overflow-wrap:break-word ;">
+            {{unitDetails.description}}
+          </p>
+        </div>
+        <br>
       </div>
-      <h1 style="text-align: right;">إرسال عرضك</h1><br>
-
-
-
-      <form class="row g-3" #form="ngForm" (ngSubmit)="addOfferComponent()">
-
-        <div class="row">
-          <textarea [(ngModel)]="addedOffer.message" style="direction:rtl" id="w3review" name="w3review" rows="7"
-            cols="50" placeholder="إرسل رسالتك هنا"></textarea>
-        </div><br>
-
-
-        <div class="col-4">
-          <button [disabled]="!token" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3">
-            تأكيـــد</button>
-        </div>
-
-        <div class="col-6" *ngIf="unitDetails.priceType == 1">
-          <label for="Offer" class="visually-hidden">Offer</label>
-          <input [(ngModel)]="addedOffer.price" name="price" style="border:solid #FF8000;" type="text"
-            class="form-control" id="Offer" placeholder="السعــر المقتــرح">
-        </div>
-      </form>
-
-
+      <br>
     </div>
+    <div class="col-lg-2"></div>
+  </div>
+  <div class="row">
+    <div class="co1-lg-2"></div>
+
+    <div class="col-lg-8" style="width: 80%;">
+      <br>
+      <div class="jj" style="border: #FF8000 1px solid; position: relative;
+      left: 12%;">
+        <br>
+
+        <h4 style="text-align: center;">إرسال عرضك</h4>
+        <form class="row g-3" #form="ngForm" (ngSubmit)="addOfferComponent()">
+          <div class="col-lg-12">
+            <textarea [(ngModel)]="addedOffer.message" style="direction:rtl; width: 90%; margin-left: 5%;" id="w3review"
+              name="w3review" rows="3" cols="50" placeholder="إرسل رسالتك هنا" class="form-control"></textarea>
+          </div>
+          <br>
+          <div class=" col-3">
+            <button [disabled]="!token" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3">
+              تأكيـــد</button>
+          </div>
+          <div class="col-8" *ngIf="unitDetails.priceType == 1">
+            <label for="Offer" class="visually-hidden">Offer</label>
+            <input [(ngModel)]="addedOffer.price" name="price"
+              style="border:solid  #FF8000;width: 90%; margin-left: 5%;" type="number" class="form-control" id="Offer"
+              placeholder="السعــر المقتــرح">
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="co1-lg-2"></div>
+
   </div>
 
   <h1 style="text-align: right;">أقترح لك </h1>
