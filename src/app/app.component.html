@@ -45,7 +45,7 @@
 
             </a>
 
-            <a (click)="registerClick()" *ngIf="userName">
+            <a (click)="registerClick()" *ngIf="userName ">
               <span style="color: black;" *ngIf="!personalPhoto">
                 <i class="material-icons">account_circle</i>
               </span>
@@ -58,35 +58,25 @@
           </span>
         </button>
 
-        <!-- <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button> -->
 
         <button mat-menu-item>
-          <a (click)="logout()" style="color: black;"><i class="material-icons">exit_to_app</i>تسجيل الخروج</a>
+          <a (click)="logout()" href=" '' " style="color: black;"><i class="material-icons">exit_to_app</i>تسجيل
+            الخروج</a>
         </button>
       </mat-menu>
-      <!-- </li> -->
 
-      <!-- <li> -->
       <a href="#" *ngIf="userName"><i class="fa fa-bell"></i></a>
-      <!-- </li> -->
-      <!-- <li -->
+
       <a *ngIf="userName"><i class="fa fa-envelope text-warning" (click)="clickHere()"
           (mouseleave)="closeChat()"></i></a>
-      <!-- </li> -->
-      <!-- <li> -->
+
       <a *ngIf="userName" href="offer/offers"><i class="fa fa-ticket"></i></a>
 
-      <!-- </li>  -->
-      <!-- <li> -->
+
       <a href="#"><i class="fa fa-heart"></i></a>
-      <!-- </li> -->
-      <!-- <li> -->
-      <a *ngIf="userName" (click)="toAddUnit()"><i class="fa fa-plus"></i></a>
-      <!-- </li> -->
-      <!-- </ul> -->
+
+      <a *ngIf="userName && token" href="unit/add" (click)="toAddUnit()"><i class="fa fa-plus"></i></a>
+
     </div>
   </div>
 

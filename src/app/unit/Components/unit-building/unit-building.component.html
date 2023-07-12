@@ -9,8 +9,10 @@
         <div class="card co1-3" style="width: 18rem; display: inline-flex;"
           *ngFor="let unit of UnitBuildBysearch | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
 
-          <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
+          <a href="unit/det/{{unit.id}}">
+            <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
+          </a>
           <div class="card-body">
             <a [href]="['unit/det/'+unit.id]">
               <p class="card-title name">{{unit.name}}</p>
@@ -135,7 +137,7 @@
 
 </div>
 
-<div class="container" *ngIf="UnitBuildBycity.length<=0 || UnitBuildBysearch.length<=0 ">
+<div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length==0 ">
   <br>
   <br>
   <br>

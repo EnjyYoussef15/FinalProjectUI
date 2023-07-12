@@ -1,9 +1,11 @@
-<div class="container" style="text-align: start;margin-left: 8%;">
+<div class="container" style="text-align: start;margin-right: 10%;">
   <h2 style=" font-weight: bolder; text-align: start;">أحدث الوحدات</h2>
-  <div class="card" style="width: 18rem; display: inline-flex;"
+  <div class="card col-3" style="width: 18rem; display: inline-flex;"
     *ngFor="let unit of unitCard | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
+    <a href="unit/det/{{unit.id}}">
+      <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
-    <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
+    </a>
 
     <div class="card-body">
       <a [href]="['unit/det/'+unit.id]">
