@@ -2,7 +2,8 @@
   <div class="row">
 
     <div class="col-lg-6">
-      Section 1
+      <!-- section1 -->
+      <br>
       <div class="gallery-container">
         <div class="main-image">
           <a [href]="unitDetails.location" target="_blank">
@@ -27,7 +28,8 @@
     </div>
 
     <div class="col-lg-6">
-      Section 2
+      <!-- Section 2 -->
+      <br>
       <h1 style="text-align: right;">{{unitDetails.name}}</h1>
       <h2 style="text-align: right;">{{unitDetails.address}} , {{unitDetails.city}} , {{unitDetails.governamnet}}
       </h2>
@@ -142,30 +144,14 @@
 
   </div>
 
-  <h1 style="text-align: right;">أقترح لك </h1>
 
-  <div class="row">
-    <div class="col-4">
-      <img height="300" width="300"
-        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
-        class="rounded " alt="...">
-    </div>
-    <div class="col-4">
-
-      <img height="300" width="300"
-        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
-        class="rounded " alt="...">
-    </div>
-    <div class="col-4">
-
-      <img height="300" width="300"
-        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
-        class="rounded " alt="...">
-    </div>
-  </div>
 </div>
-
-<!-- <img src="{{unitDetails.coverImgageSrc}}" alt="">
-<img src="http://localhost:5219/Images/123.jpg" alt=""> -->
-
+<div class="container">
+  <br>
+  <br>
+  <h1 style="text-align: right;">أقترح لك </h1>
+  <app-unit-building [government]="unitDetails.governamnet" [area]="unitDetails.area" [unitType]="unitDetails.unitType"
+    [priceType]="unitDetails.priceType" [title]="title" style="position: relative;
+    bottom: 80px;"></app-unit-building>
+</div>
 <!-- <app-unit-card></app-unit-card> -->

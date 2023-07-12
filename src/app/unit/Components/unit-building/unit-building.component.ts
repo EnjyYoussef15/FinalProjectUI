@@ -1,4 +1,4 @@
-import { Component , OnInit ,OnDestroy, HostListener } from '@angular/core';
+import { Component , OnInit ,OnDestroy, HostListener, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UnitCard } from '../../Models/unit-card';
@@ -7,6 +7,7 @@ import { TypePrice } from '../../Models/type-price';
 import { UnitService } from '../../Services/unit.service';
 import { UnitDetails } from '../../Models/unit-details';
 import { Favorites } from '../../Models/favorites';
+import { City } from '../../Models/unit';
 
 
 
@@ -20,27 +21,34 @@ import { Favorites } from '../../Models/favorites';
 export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
 
+@Input() government?: string;
+@Input()  area?: number;
+@Input()  unitType?: UnitType;
+@Input()  priceType?: TypePrice;
+@Input() title?:string;
+
 
   // product?: UnitCard;
 
   UnitBuildBysearch :UnitCard[]=[];
   UnitBuildBycity :UnitCard[]=[];
+  UnitBuildByCategory :UnitCard[]=[];
+
 
 
   errorMessage:string ='';
   sub!:Subscription;// ! assertion operator not null
   constructor(private router : Router , private route :ActivatedRoute, private service:UnitService )
   {
-
+    this.title="أحدث الوحدات";
   }
 
-  government?: string;
-  area?: number;
-  unitType?: UnitType;
-  priceType?: TypePrice;
+  // government?: string;
+  // area?: number;
+  // unitType?: UnitType;
+  // priceType?: TypePrice;
 
   cityonlyy?:string;
-
 
   pCard:number=1;
   itemsPerPageCard:number=4;
@@ -49,16 +57,6 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(id);
-
-    // this.service.getoneUnit(id).subscribe
-    // ({ next : Unit => {
-    //     this.product = Unit;
-    //   },
-    //   error : err => console.log(err+ "ss")
-    // })
-
 
     this.route.paramMap.subscribe(params => {
       this.government = params.get('government')!;
@@ -70,15 +68,13 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
       this.service.getbySearch(this.area,this.unitType,this.priceType,this.government).subscribe
     ({ next : catogries => {
         this.UnitBuildBysearch=catogries;
-        this.UnitBuildBysearch.forEach(c=>{console.log( c.price)});
-
-
+        // this.UnitBuildBysearch.forEach(c=>{console.log( c.price)});
         this.totalItemsCard=this.UnitBuildBysearch.length;
 
       },
       error : err => console.log(err)
     });
-
+///////////////////////////////////////////////////////////////////////////////////////////
 
     this.route.paramMap.subscribe(param => {
       this.cityonlyy = param.get('cityonly')!;
@@ -96,8 +92,23 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
       });
     }
+  this.getCitiesComponent();
+
   }
 
+  city:City[]=[];
+onecity?:City;
+getCitiesComponent(){
+this.service.getCities().subscribe({
+  next:(value)=>{
+    this.city=value;
+    this.onecity= this.city.find(m=>m.cityName==this.cityonlyy)
+    console.log("City",this.city);
+
+  }
+});
+}
+//////////////////////////////////////////////////////////////////////
   pageName : string = "Catogry List";
   // list show
   showlis :boolean = false;

@@ -1,11 +1,23 @@
-.cat{
-  BACKGROUND-COLOR: #e2e2e2;
-  BORDER-RADIUS: 10%;
-  margin: .2rem;
+
+.cat {
+  background-color: antiquewhite;
+  border-radius: 50px;
+  border: 1px orange ;
+  margin-left: 6px;
   float: right;
+  width: 16%;
+  border-style: dashed;
+}
+.cat:hover{
+  translate: 0px 10px;
 }
 .h3{
   margin-top: 10px;
   font-weight: 900;
   color: #131313;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }

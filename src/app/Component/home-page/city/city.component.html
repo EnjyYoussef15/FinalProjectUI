@@ -1,15 +1,14 @@
-
-
 <div class="container">
   <fieldset>
     <legend style="text-align: center;">
       <h2 style=" font-weight: bolder; text-align: start;">أهم المناطق </h2>
       <br>
       <div class="row import">
-        <div *ngFor="let product of city | paginate :{itemsPerPage:itemsPerPageCity,currentPage:pCity}"  class="col-4 cc">
-          <a href="/Unit/Allunits/{{product.cityName}}"> <img src="{{product.cityImage}}" alt="..."></a>
+        <div *ngFor="let product of city | paginate :{itemsPerPage:itemsPerPageCity,currentPage:pCity}"
+          class="col-4 cc">
+          <a href="/unit/Allunits/{{product.cityName}}"> <img [src]="product.cityImage" alt="..."></a>
           <div class="buildinfo">
-            <h3> <a href="/Unit/Allunits/{{product.cityName}}" style="color: white;"> {{product.cityName}}</a></h3>
+            <h3> <a href="/unit/Allunits/{{product.cityName}}" style="color: white;"> {{product.cityName}}</a></h3>
             <p> {{product.count }} وحدة</p>
           </div>
         </div>
@@ -21,5 +20,6 @@
 </div>
 
 
- <div class="py-5" style="text-align: center;">
-  <pagination-controls (pageChange)="pCity=$event"></pagination-controls></div>
+<div class="py-5" style="text-align: center;">
+  <pagination-controls (pageChange)="pCity=$event"></pagination-controls>
+</div>

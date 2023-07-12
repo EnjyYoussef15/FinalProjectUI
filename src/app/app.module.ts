@@ -38,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
 
 
 
+
 @NgModule({
   exports:[UnitCardComponent],
   declarations: [
@@ -47,6 +48,7 @@ import { MatCardModule } from '@angular/material/card';
     CategoryComponent,
     CityComponent,
     SearchComponent,
+
   ],
 
   imports: [

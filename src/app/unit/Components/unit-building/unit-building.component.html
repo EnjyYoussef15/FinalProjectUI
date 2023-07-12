@@ -5,7 +5,7 @@
       <br>
       <br>
       <div class="container" style="text-align: start;margin-right: 5%;">
-        <h2 style=" font-weight: bolder; text-align: start;">أحدث الوحدات</h2>
+        <h2 style=" font-weight: bolder; text-align: start;"> {{title}}</h2>
         <div class="card co1-3" style="width: 18rem; display: inline-flex;"
           *ngFor="let unit of UnitBuildBysearch | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
 
@@ -73,19 +73,33 @@
 
 <!-- ////////////////////city///////// -->
 
-<div *ngIf="UnitBuildBycity.length>0" class="container">
+<div *ngIf="UnitBuildBycity.length>0">
+  <div class="container-fluid" *ngIf="onecity != null">
+    <fieldset>
+      <legend style="text-align: center;">
+
+        <div class="row">
+          <div>
+
+            <br>
+            <br>
+            <a href="/unit/Allunits/{{onecity.cityName}}"> <img src="{{onecity.cityImage}}" alt="..." width="100%"
+                height="400"></a>
+            <div class="buildinfo">
+              <h2> <a href="/unit/Allunits/{{onecity.cityName}}" style="color: white; font-weight: 600;"> جد بيتك
+                  المستقبلي
+                  في محافظة {{onecity.cityName}}</a></h2>
+            </div>
+          </div>
+        </div>
+      </legend>
+    </fieldset>
+  </div>
   <fieldset>
     <legend style="text-align: end;">
-      <br>
-      <br>
-      <br>
-      <h2 id="top" style=" font-weight: bold; text-align: center;"> جد بيتك المستقبلي </h2>
-      <br>
-      <br>
       <div class="container" style="text-align: start;margin-right: 5%;">
         <div class="card co1-3" style="width: 18rem; display: inline-flex;"
           *ngFor="let unit of UnitBuildBycity | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
-
           <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
           <div class="card-body">
@@ -136,6 +150,9 @@
   </fieldset>
 
 </div>
+
+<!-- /////////////////////category///////////////////// -->
+
 
 <div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length==0 ">
   <br>

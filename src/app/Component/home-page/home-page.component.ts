@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 // import { UnitBuild } from 'src/app/unit-building/Model/unit-build';
 // import { UnitBuildService } from 'src/app/Services/UnitBuildingService/unit-build.service';
 // import { UnitBycity } from 'src/app/unit-building/Model/unit-bycity';
@@ -6,11 +6,8 @@ import { Router } from '@angular/router';
 // import { HomePageService } from 'src/app/Services/HomePageService/home-page.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-
-
-
 
 
 
@@ -158,4 +155,46 @@ registerClick(){
 //   this.name="";
 // }
   }
+  searchClick()
+{
+  window.scrollTo(0, 0);
 }
+formData = {
+  name: '',
+  email: '',
+  massage:'',
+  phone:'',
+};
+showErrors = false;
+@ViewChild('myForm') myForm!: NgForm;
+
+
+showMessage=false;
+
+close(){
+this.showMessage=false;
+
+}
+submitForm() {
+  // do something with the form data
+
+  console.log(this.formData);
+
+  // reset the form
+  if (this.myForm.valid) {
+this.myForm.reset();
+    // this.formData = {
+    //   name: '',
+    //   email: '',
+    //   massage:'',
+    //   phone:''};
+    this.showMessage=true;
+
+}
+else{
+  this.showErrors = true;
+}
+}
+}
+
+

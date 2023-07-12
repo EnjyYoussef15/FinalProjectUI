@@ -1,3 +1,7 @@
+
+*{
+  font-weight: 600;
+}
 .caption
 {
   background-color: #00000069;
@@ -36,8 +40,8 @@
 .buildinfo{
   position: relative; bottom: 25%; color: white; margin: 2%;
 }
-.show{
-  background-color: orange;position: relative; left: 45%;
+.buildinfo:hover{
+  translate: 0px 10px;
 }
 hr {
   margin: 1rem 0;
@@ -55,7 +59,7 @@ a {
 
 .searchFor .col-2{
   color: orange;
-  background-color: rgb(215, 215, 215);
+  background-color: antiquewhite;
   border-radius: 25px;
   display: inline-block;
   margin-left: 30px;
@@ -86,4 +90,24 @@ a {
   width: 2px;
   padding: 0;
   margin-top: 7px;
+}
+
+/* alert */
+.show{
+  width: 70%;
+  align-items: center;
+  position: absolute;
+  margin-right: 15%;
+  background-color: #ffa500ba;
+    color: black;
+    font-weight: 600;
+    border-radius: 15px
+}
+.close{
+  border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    float: left;
+
 }

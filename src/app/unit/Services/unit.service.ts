@@ -9,6 +9,7 @@ import { UnitDetails } from '../Models/unit-details';
 import { City } from '../Models/unit';
 import { UnitType } from '../Models/unit-type';
 import { TypePrice } from '../Models/type-price';
+import { ICategoryWithBuilding } from '../Models/icategory';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,9 @@ export class UnitService {
     return this.http.post<any>(this.baseUrl+"Unit/addUnit/"+localStorage.getItem('token'),unit);
   }
 
-  getCategory():Observable<any>{
-    return this.http.get<any[]>("http://localhost:5219/api/category");
-  }
-      getGovernerateData() {
+
+      getGovernerateData()
+    {
      return this.http.get<any[]>('assets/Data/GovernamentsData.json');
     }
 
@@ -53,7 +53,8 @@ export class UnitService {
       return this.http.get<UnitDetails>(this.baseUrl+"Unit/getUnit/"+unitID);
     }
 
-    getCities(){
+    getCities()
+    {
       return this.http.get<City[]>(this.baseUrl+"Unit/getCities");
     }
 
@@ -67,4 +68,15 @@ export class UnitService {
     return this.http.get<UnitCard[]>(this.baseUrl+'Unit/'+city);
 
   }
+  getAllUnitsByCategory(Catid:number)
+  {
+    return this.http.get<ICategoryWithBuilding>('http://localhost:5219/api/category/'+Catid);
+  }
+
+  getCategory():Observable<any>
+  {
+    return this.http.get<any[]>("http://localhost:5219/api/category");
+  }
+
+
 }

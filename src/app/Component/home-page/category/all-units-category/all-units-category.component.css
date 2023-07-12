@@ -1,6 +1,6 @@
-.container-fluid{
+/* .container-fluid{
   text-align: center;
-}
+} */
 .card{
   position: relative !important;
   padding-bottom: 0;
@@ -109,20 +109,18 @@ li .current{
 
 }
 
-
-
-/* //////
- */
+/* ///////////////////////// */
 .buildinfo{
 
   position: relative;
-  bottom: 30%;
+  bottom: 28%;
   color: white;
   margin: 3%;
-  background-color: #00000069;
+  background-color: #00000099;
   border-radius: 17px;
   padding: 20px;
   font-size: 20px;
+
 }
 .buildinfo:hover{
   translate: 0px 10px;

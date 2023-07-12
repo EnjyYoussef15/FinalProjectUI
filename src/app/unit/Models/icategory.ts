@@ -10,5 +10,5 @@ export interface ICategoryWithBuilding {
   id:number,
   name:string,
   coverImage:string,
-  UnitCard:UnitCard[]
+  unitBuildingCardDTOs:UnitCard[]
 }

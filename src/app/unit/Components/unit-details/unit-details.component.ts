@@ -4,6 +4,10 @@ import { UnitService } from '../../Services/unit.service';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from 'src/app/offers/Models/offer';
 import { OffersService } from 'src/app/offers/Services/offers.service';
+import { UnitType } from '../../Models/unit-type';
+import { TypePrice } from '../../Models/type-price';
+import { UnitCard } from '../../Models/unit-card';
+import { Favorites } from '../../Models/favorites';
 
 
 @Component({
@@ -14,6 +18,8 @@ import { OffersService } from 'src/app/offers/Services/offers.service';
 })
 
 export class UnitDetailsComponent implements OnInit{
+
+
 
     ////////// For Offer ///////////////
     addedOffer: Offer = {
@@ -47,10 +53,12 @@ unitID:any;
       coverImageString:'',
       unitImagesString: ''
     }
-
+title?:string;
     selectedImage: String = '';
     constructor(private unitservice: UnitService,private route: ActivatedRoute,
-       private offerservice : OffersService){}
+       private offerservice : OffersService){
+
+       }
 
     ngOnInit(): void {
 
@@ -84,6 +92,7 @@ unitID:any;
       });
 
     }
+
 
     selectImage(index: number) {
       this.selectedImage = "http://localhost:5219/UnitImages/"+this.unitDetails.unitImagesString!.split(',')[index];

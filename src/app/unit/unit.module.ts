@@ -18,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AllUnitsCategoryComponent } from '../Component/home-page/category/all-units-category/all-units-category.component';
 // import { AppModule } from '../app.module';
 
 
@@ -27,6 +28,8 @@ const routes:Routes=[
   {path:'det/:id', component: UnitDetailsComponent},
   {path: 'Allunits/:cityonly', component: UnitBuildingComponent, title: 'Unit List'},
   {path: 'Allunits/:area/:unitType/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
+  {path: 'Allun/:id', component: AllUnitsCategoryComponent, title: 'Unit List'},
+
 
 ];
 
@@ -36,6 +39,7 @@ const routes:Routes=[
     SelectDurationComponent,
     UnitDetailsComponent,
     UnitBuildingComponent,
+    AllUnitsCategoryComponent
 
   ],
   imports: [

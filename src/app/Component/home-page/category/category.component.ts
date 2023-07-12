@@ -20,6 +20,7 @@ export class CategoryComponent implements OnInit {
       next:(value)=> {
         this.Categories=value;
         console.log("Categories===>>>> ",this.Categories);
+        this.Categories.forEach(m=>{console.log( m.coverImage)})
       },
     });
   }
