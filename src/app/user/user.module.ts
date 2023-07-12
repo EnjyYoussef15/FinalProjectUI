@@ -7,6 +7,8 @@ import { VerifyAccountComponent } from './Components/verify-account/verify-accou
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { userAuthGGuard } from './Guird/user-auth-g.guard';
+import { ProfileComponent } from './Components/profile/profile.component';
+
 
 
 const routes:Routes=[
@@ -14,14 +16,17 @@ const routes:Routes=[
     path:'register',component:RegisterComponent
   },
   {path:'login',component:LoginComponent},
-  {path:'verify',component:VerifyAccountComponent,canActivate:[userAuthGGuard]}
+  { path: 'verify', component: VerifyAccountComponent, canActivate: [userAuthGGuard] },
+  {path:'profile',component:ProfileComponent, title:'الصفحة الشخصية'},
+
 ]
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
