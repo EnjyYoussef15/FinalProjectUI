@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from 'src/app/offers/Models/offer';
 import { OffersService } from 'src/app/offers/Services/offers.service';
 
+
 @Component({
   selector: 'app-unit-details',
   templateUrl: './unit-details.component.html',
