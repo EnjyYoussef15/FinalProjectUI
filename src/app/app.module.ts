@@ -36,6 +36,7 @@ import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
+  exports:[UnitCardComponent],
   declarations: [
     AppComponent,
     HomePageComponent,
