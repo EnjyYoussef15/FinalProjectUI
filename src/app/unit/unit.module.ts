@@ -18,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AppModule } from '../app.module';
 
 
 const routes:Routes=[
@@ -52,7 +53,7 @@ const routes:Routes=[
     FormsModule,
     MatTableModule,
     NgxPaginationModule,
-
+    AppModule,
     MatCardModule,
     RouterModule.forChild(routes),
 
