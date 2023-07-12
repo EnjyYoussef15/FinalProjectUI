@@ -37,8 +37,8 @@ export class UnitCardComponent implements OnInit{
 
   constructor(private services:UnitService,private router:Router){}
   ngOnInit(): void {
-this.getunitsComponent();
-this.getFavorites();
+  this.getunitsComponent();
+  this.getFavorites();
 
   }
 

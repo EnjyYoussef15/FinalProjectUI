@@ -80,7 +80,9 @@ previousCity(){
     console.log(this.limitcity);
 }
 
-
+registerClick(){
+  this.router.navigate(['/user/register'])
+}
 
 //   UnitBuildList : UnitBuild [] =[];
 

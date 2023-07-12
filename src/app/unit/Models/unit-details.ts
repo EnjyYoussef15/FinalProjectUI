@@ -9,17 +9,17 @@ export interface UnitDetails {
   governamnet:string
   city :string
   location :string
- unitType: UnitType
+  unitType: UnitType
   price:number
   capacityRoom :number,
   capacityBathRoom :number,
   coverImageString :string
-    description :string
-    floorNumber?:number
-    address:string
-   priceType: TypePrice ,
-    minPrice?:number
+  description :string
+  floorNumber?:number
+  address:string
+  priceType: TypePrice ,
+  minPrice?:number
   maxPrice?:number
-   unitImagesString?:string
+  unitImagesString?:string
 }
 

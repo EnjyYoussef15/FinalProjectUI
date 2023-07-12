@@ -1,67 +1,76 @@
-
 <div class="coverImage">
-  <div class="form">
-    <div class="log-image">
-      <img src="assets/Images/logo.png" width="100%" alt="" srcset="">
-    </div>
-    <form [formGroup]="userForm">
-
-      <div class="mb-3">
-        <input type="text" class="form-control" id="name" name="FullName" formControlName="FullName" placeholder="الاسم"
-          [ngClass]="{'is-invalid': userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid">
-          <span *ngIf="userForm.get('FullName')?.errors?.['required']">Please Enter the Name</span>
-          <span *ngIf="userForm.get('FullName')?.errors?.['minlength']">Name must be at least 8 characters long</span>
-        </span>
+  <div class="container">
+    <div class="form">
+      <div class="log-image">
+        <img src="assets/Images/logo.png" width="100%" alt="" srcset="">
       </div>
+      <form [formGroup]="userForm">
 
-      <div class="mb-3">
-        <input type="email" class="form-control" id="email" name="Email" formControlName="Email" placeholder="الإيميل"
-          [ngClass]="{'is-invalid': userForm.get('Email')?.touched && userForm.get('Email')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('Email')?.touched && userForm.get('Email')?.invalid">
-          <span *ngIf="userForm.get('Email')?.errors?.['required']">Please Enter an Email</span>
-          <span *ngIf="userForm.get('Email')?.errors?.['email']">Please Enter a valid Email</span>
-        </span>
-      </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="name" name="FullName" formControlName="FullName"
+            placeholder="الاسم"
+            [ngClass]="{'is-invalid': userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid}">
+          <span class="invalid-feedback" *ngIf="userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid">
+            <span *ngIf="userForm.get('FullName')?.errors?.['required']">Please Enter the Name</span>
+            <span *ngIf="userForm.get('FullName')?.errors?.['minlength']">Name must be at least 8 characters long</span>
+          </span>
+        </div>
 
-      <div class="mb-3">
-        <input type="password" class="form-control" id="password" name="Password" formControlName="Password" placeholder="كلمة السر"
-          [ngClass]="{'is-invalid': userForm.get('Password')?.touched && userForm.get('Password')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('Password')?.touched && userForm.get('Password')?.invalid">
-          <span *ngIf="userForm.get('Password')?.errors?.['required']">Please Enter a Password</span>
-        </span>
-      </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="email" name="Email" formControlName="Email" placeholder="الإيميل"
+            [ngClass]="{'is-invalid': userForm.get('Email')?.touched && userForm.get('Email')?.invalid}">
+          <span class="invalid-feedback" *ngIf="userForm.get('Email')?.touched && userForm.get('Email')?.invalid">
+            <span *ngIf="userForm.get('Email')?.errors?.['required']">Please Enter an Email</span>
+            <span *ngIf="userForm.get('Email')?.errors?.['email']">Please Enter a valid Email</span>
+          </span>
+        </div>
 
-      <div class="mb-3">
-        <input type="text" class="form-control" id="address" name="Address" formControlName="Address" placeholder="العنوان"
-          [ngClass]="{'is-invalid': userForm.get('Address')?.touched && userForm.get('Address')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('Address')?.touched && userForm.get('Address')?.invalid">
-          <span *ngIf="userForm.get('Address')?.errors?.['required']">Please Enter the Address</span>
-        </span>
-      </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" id="password" name="Password" formControlName="Password"
+            placeholder="كلمة السر"
+            [ngClass]="{'is-invalid': userForm.get('Password')?.touched && userForm.get('Password')?.invalid}">
+          <span class="invalid-feedback" *ngIf="userForm.get('Password')?.touched && userForm.get('Password')?.invalid">
+            <span *ngIf="userForm.get('Password')?.errors?.['required']">Please Enter a Password</span>
+          </span>
+        </div>
 
-      <div class="mb-3">
-        <input type="tel" class="form-control" id="phone" name="PhoneNumber" formControlName="PhoneNumber" placeholder="رقم الهاتف"
-          [ngClass]="{'is-invalid': userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid">
-          <span *ngIf="userForm.get('PhoneNumber')?.errors?.['required']">Please Enter the Phone Number</span>
-        </span>
-      </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="address" name="Address" formControlName="Address"
+            placeholder="العنوان"
+            [ngClass]="{'is-invalid': userForm.get('Address')?.touched && userForm.get('Address')?.invalid}">
+          <span class="invalid-feedback" *ngIf="userForm.get('Address')?.touched && userForm.get('Address')?.invalid">
+            <span *ngIf="userForm.get('Address')?.errors?.['required']">Please Enter the Address</span>
+          </span>
+        </div>
 
-      <div class="mb-3">
-        <input type="date" class="form-control" [min]="minDate" [max]="maxDate" id="BirthDate" name="BirthDate" formControlName="BirthDate" placeholder="تاريخ الميلاد"
-          [ngClass]="{'is-invalid': userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid}">
-        <span class="invalid-feedback" *ngIf="userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid">
-          <span *ngIf="userForm.get('BirthDate')?.errors?.['required']">Please Enter the Birth Date</span>
-        </span>
-      </div>
+        <div class="mb-3">
+          <input type="tel" class="form-control" id="phone" name="PhoneNumber" formControlName="PhoneNumber"
+            placeholder="رقم الهاتف"
+            [ngClass]="{'is-invalid': userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid}">
+          <span class="invalid-feedback"
+            *ngIf="userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid">
+            <span *ngIf="userForm.get('PhoneNumber')?.errors?.['required']">Please Enter the Phone Number</span>
+          </span>
+        </div>
 
-       <div class="mb-3">
-          <button type="submit" class="form-control btnSubmit" [disabled]="userForm.invalid" (click)="registerComponent()"> تسجيل </button>
-      </div>
-    </form>
+        <div class="mb-3">
+          <input type="date" class="form-control" [min]="minDate" [max]="maxDate" id="BirthDate" name="BirthDate"
+            formControlName="BirthDate" placeholder="تاريخ الميلاد"
+            [ngClass]="{'is-invalid': userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid}">
+          <span class="invalid-feedback"
+            *ngIf="userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid">
+            <span *ngIf="userForm.get('BirthDate')?.errors?.['required']">Please Enter the Birth Date</span>
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="form-control btnSubmit" [disabled]="userForm.invalid"
+            (click)="registerComponent()"> تسجيل </button>
+        </div>
+      </form>
       <div class="mb-3 togelText">هل لديك حساب بالفعل ؟
-    <a href='user/login'>دخول</a>
+        <a href='user/login'>دخول</a>
       </div>
+    </div>
   </div>
 </div>

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { CommonModule } from '@angular/common';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -29,11 +32,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 
 @NgModule({
+  exports:[UnitCardComponent],
   declarations: [
     AppComponent,
     HomePageComponent,
@@ -42,6 +48,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CityComponent,
     SearchComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,6 +58,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    CommonModule,
 
     MatAutocompleteModule,
     MatFormFieldModule,
@@ -61,10 +69,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgIf,
     MatInputModule,
     MatPaginatorModule,
-
-
+    MatTableModule,
+    MatCardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

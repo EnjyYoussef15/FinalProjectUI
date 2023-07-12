@@ -5,11 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from 'src/app/offers/Models/offer';
 import { OffersService } from 'src/app/offers/Services/offers.service';
 
+
 @Component({
   selector: 'app-unit-details',
   templateUrl: './unit-details.component.html',
-  styleUrls: ['./unit-details.component.css']
+  styleUrls: ['./unit-details.component.css'],
+
 })
+
 export class UnitDetailsComponent implements OnInit{
 
     ////////// For Offer ///////////////
@@ -63,17 +66,20 @@ unitID:any;
         // }
 
         this.unitservice.getUnitDetails(this.unitID).subscribe({
-          next: (response) => {
+          next: (response) =>
+          {
 
             this.unitDetails = response;
             console.log("UnitDetail===>>> ",this.unitDetails);
 
             this.selectedImage = "http://localhost:5219/UnitImages/"+this.unitDetails.coverImageString;
             console.log("SelectedImage===>>> ",this.selectedImage);
+
           },
           error: (error) => {
             console.log(error);
           }
+
         });
       });
 

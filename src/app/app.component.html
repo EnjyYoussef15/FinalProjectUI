@@ -15,7 +15,7 @@
     <div class="navBarSearch1" dir="ltr">
       <!-- <ul> -->
       <!-- <li> -->
-      <span class="first">
+      <!-- <span class="first">
         <a (click)="registerClick()" *ngIf="!userName">
           <i class="fa fa-user"></i>
           <span class="ms-2" style="font-weight: 800;">تسجيل الدخول</span>
@@ -28,48 +28,55 @@
             *ngIf="personalPhoto">
           <span class="ms-2">{{userName}}</span>
         </a>
-      </span>
+      </span> -->
       <!-- </li> -->
       <!-- <li> -->
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+        style="bottom: 8px; right: 5px;">
+        <i class="fa fa-user"></i>
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <a href="/user/profile" style="color: black;"><mat-icon>dialpad</mat-icon>Profile</a>
+        <button mat-menu-item style="right: 48px">
+          <span class="first">
+            <a style="color: black;" (click)="registerClick()" *ngIf="!userName">
+              <i class="material-icons">account_circle</i>
+              <span class="ms-2" style="font-weight: 800; color: black;">تسجيل الدخول</span>
 
-          <!-- <span>Profile</span> -->
+            </a>
+
+            <a (click)="registerClick()" *ngIf="userName ">
+              <span style="color: black;" *ngIf="!personalPhoto">
+                <i class="material-icons">account_circle</i>
+              </span>
+
+              <span style="color: black;" *ngIf="personalPhoto">
+                <img [src]="personalPhoto" width="25px" height="25px" style="border-radius: 50%;" alt="" srcset="">
+              </span>
+              <span class="ms-2" style="color: black;">{{userName}}</span>
+            </a>
+          </span>
         </button>
 
-        <!-- <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button> -->
 
         <button mat-menu-item>
-          <a href="/homepage" style="color: black;"><mat-icon>notifications_off</mat-icon>Logout</a>
+          <a (click)="logout()" href=" '' " style="color: black;"><i class="material-icons">exit_to_app</i>تسجيل
+            الخروج</a>
         </button>
       </mat-menu>
-      <!-- </li> -->
 
-      <!-- <li> -->
-      <a href="#"><i class="fa fa-bell"></i></a>
-      <!-- </li> -->
-      <!-- <li -->
-      <a><i class="fa fa-envelope text-warning" (click)="clickHere()" (mouseleave)="closeChat()"></i></a>
-      <!-- </li> -->
-      <!-- <li> -->
-      <a href="offer/offers"><i class="fa fa-ticket"></i></a>
+      <a href="#" *ngIf="userName"><i class="fa fa-bell"></i></a>
 
-      <!-- </li>  -->
-      <!-- <li> -->
+      <a *ngIf="userName"><i class="fa fa-envelope text-warning" (click)="clickHere()"
+          (mouseleave)="closeChat()"></i></a>
+
+      <a *ngIf="userName" href="offer/offers"><i class="fa fa-ticket"></i></a>
+
+
       <a href="#"><i class="fa fa-heart"></i></a>
-      <!-- </li> -->
-      <!-- <li> -->
-      <a (click)="toAddUnit()"><i class="fa fa-plus"></i></a>
-      <!-- </li> -->
-      <!-- </ul> -->
+
+      <a *ngIf="userName && token" href="unit/add" (click)="toAddUnit()"><i class="fa fa-plus"></i></a>
+
     </div>
   </div>
 
@@ -81,7 +88,8 @@
 </div>
 <router-outlet></router-outlet>
 
-<footer dir="ltr" class="container-fluid" style="background-color: black; color: white; text-align: end;">
+<footer dir="ltr" class="container-fluid"
+  style="position: relative; bottom: 0; background-color: black; color: white; text-align: end;">
   <div class="container">
     <br>
     <h2>
@@ -95,14 +103,23 @@
     </p>
     <br>
     <div>
-      <img style="width: 50px; border-radius: 50px;"
-        src="https://winfreydesignbuild.com/site/wp-content/uploads/soft-contemporary-24-e1466783187639.jpg">
-      <img style="width: 50px; border-radius: 50px;"
-        src="https://winfreydesignbuild.com/site/wp-content/uploads/soft-contemporary-24-e1466783187639.jpg">
-      <img style="width: 50px; border-radius: 50px;"
-        src="https://winfreydesignbuild.com/site/wp-content/uploads/soft-contemporary-24-e1466783187639.jpg">
-      <img style="width: 50px; border-radius: 50px;"
-        src="https://winfreydesignbuild.com/site/wp-content/uploads/soft-contemporary-24-e1466783187639.jpg">
+      <a href="">
+        <img style="width: 30px; border-radius: 50px;" src="../assets/Images/Facebook-icon.png">
+      </a>
+      &nbsp;
+      <a href="">
+        <img style="width: 30px; border-radius: 50px;" src="../assets/Images/google+.png">
+      </a>
+      &nbsp;
+      <a href="">
+        <img style="width: 30px; border-radius: 50px;" src="../assets/Images/linkedin.png">
+      </a>
+
+      &nbsp;
+
+
+      <!-- <img style="width: 50px; border-radius: 50px;"
+        src="https://winfreydesignbuild.com/site/wp-content/uploads/soft-contemporary-24-e1466783187639.jpg"> -->
     </div>
     <br>
     <span style="height: 2px;
@@ -111,21 +128,24 @@
     padding: 0;"></span>
 
   </div>
-  <div class="row" style="text-align: center;">
-    <a style="color: orange !important;" href="#" class="col-2">شركة عقارات</a>
-    <span class="col-1"></span>
-    <a href="#" class="col-2">الشروط والاحكام</a>
+  <div class="container">
+    <div class="row" style="text-align: center;">
+      <a style="color: orange !important;" href="#" class="col-2">شركة عقارات</a>
+      <span class="col-1"></span>
+      <a href="#" class="col-2">الشروط والاحكام</a>
 
-    <a href="#" class="col-1"> اتصل بنا</a>
+      <a href="#" class="col-1"> اتصل بنا</a>
 
-    <a href="#" class="col-1"> بحث</a>
+      <a href="#" class="col-1"> بحث</a>
 
-    <a href="#" class="col-1"> الرئيسية</a>
-    <span class="col-1"></span>
+      <a href="#" class="col-1"> الرئيسية</a>
+      <span class="col-1"></span>
 
-    <a style="color: orange !important;" href="#" class="col-3">©Copyright 2023-Skany</a>
+      <a style="color: orange !important;" href="#" class="col-3">©Copyright 2023-Skany</a>
 
-
+      <br>
+      <br>
+    </div>
   </div>
-  <br>
+
 </footer>

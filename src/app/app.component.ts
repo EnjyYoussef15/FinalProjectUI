@@ -29,6 +29,12 @@ registerClick(){
   this.router.navigate(['/user/register'])
 }
 
+logout(){
+  // this.router.navigate(['']);
+  localStorage.removeItem('token');
+  console.log('token')
+}
+
 showChat:boolean=false;
 clickHere(){
   this.showChat= !this.showChat;
@@ -36,11 +42,15 @@ clickHere(){
 closeChat(){
   this.showChat=false;
 }
+
+token:string|null = localStorage.getItem('token');
+
 toAddUnit(){
-  if(localStorage.getItem('token')){
-    this.router.navigate(['/unit/add']);
+  if(!localStorage.getItem('token')){
+    this.router.navigate(['/user/register'])
+    // this.router.navigate(['/unit/add']);
   }
-  else this.router.navigate(['/user/register'])
+  // else this.router.navigate(['/user/register'])
 }
 }
 
