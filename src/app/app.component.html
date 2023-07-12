@@ -32,12 +32,12 @@
       <!-- </li> -->
       <!-- <li> -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-        style="bottom: 11px; right: 5px;">
+        style="bottom: 8px; right: 5px;">
         <i class="fa fa-user"></i>
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item style="right: 48px">
           <span class="first">
             <a style="color: black;" (click)="registerClick()" *ngIf="!userName">
               <i class="material-icons">account_circle</i>
@@ -49,7 +49,7 @@
               <span style="color: black;" *ngIf="!personalPhoto">
                 <i class="material-icons">account_circle</i>
               </span>
-              <i class="fa fa-user"></i>
+
               <span style="color: black;" *ngIf="personalPhoto">
                 <img [src]="personalPhoto" width="25px" height="25px" style="border-radius: 50%;" alt="" srcset="">
               </span>

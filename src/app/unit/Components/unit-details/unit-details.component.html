@@ -5,13 +5,14 @@
       <div class="gallery-container">
         <div class="main-image">
           <a [href]="unitDetails.location" target="_blank">
-            <img class="icon" height="30px" width="30px" src="https://w7.pngwing.com/pngs/200/830/png-transparent-google-map-logo-google-maps-navigation-location-text-logo-sign.png" alt="">
+            <img class="icon" height="30px" width="30px"
+              src="https://w7.pngwing.com/pngs/200/830/png-transparent-google-map-logo-google-maps-navigation-location-text-logo-sign.png"
+              alt="">
           </a>
           <img class="main" [src]="selectedImage" alt="Main Image" />
           <div class="thumbnail-images">
 
-            <div *ngFor="let imagePath of unitDetails.unitImagesString!.split(','); let i = index"
-             class="thumbnail"
+            <div *ngFor="let imagePath of unitDetails.unitImagesString!.split(','); let i = index" class="thumbnail"
               (click)="selectImage(i)">
               <ng-container *ngIf="imagePath">
                 <img [src]="'http://localhost:5219/UnitImages/'+imagePath" alt="Thumbnail Image {{ i + 1 }}">
@@ -29,7 +30,8 @@
       <h1 style="text-align: right;">{{unitDetails.name}}</h1>
       <h3 style="text-align: right;">{{unitDetails.address}} , {{unitDetails.city}} , {{unitDetails.governamnet}} </h3>
       <div style="text-align: right;">
-        <span class="btn  disabled" style="color:white ; background-color: #FF8000;">{{unitDetails.price | currency:'EGP'}}</span>
+        <span class="btn  disabled" style="color:white ; background-color: #FF8000;">{{unitDetails.price |
+          currency:'EGP'}}</span>
       </div><br>
       <p style="text-align: right;">مواصفات الوحدة</p>
 
@@ -58,13 +60,13 @@
           </tr>
 
           <tr *ngIf="unitDetails.priceType==1">
-            <td >{{unitDetails.minPrice | currency:'EGP'}}</td>
-            <th scope="col" >أقل سعر</th>
+            <td>{{unitDetails.minPrice | currency:'EGP'}}</td>
+            <th scope="col">أقل سعر</th>
 
           </tr>
           <tr *ngIf="unitDetails.priceType==1">
-            <td >{{unitDetails.maxPrice | currency:'EGP'}}</td>
-            <th scope="col" >أقصي سعر</th>
+            <td>{{unitDetails.maxPrice | currency:'EGP'}}</td>
+            <th scope="col">أقصي سعر</th>
 
           </tr>
           <tr>
@@ -76,7 +78,7 @@
             <td>{{unitDetails.capacityBathRoom}}</td>
             <th scope="col">عدد الحمامات</th>
 
-          <!-- </tr>
+            <!-- </tr>
             <td>{{unitDetails.date | date}}</td>
             <th scope="col">التاريخ</th> -->
         </thead>
@@ -103,18 +105,21 @@
       <form class="row g-3" #form="ngForm" (ngSubmit)="addOfferComponent()">
 
         <div class="row">
-          <textarea [(ngModel)]="addedOffer.message" style="direction:rtl" id="w3review" name="w3review" rows="7" cols="50" placeholder="إرسل رسالتك هنا"></textarea>
+          <textarea [(ngModel)]="addedOffer.message" style="direction:rtl" id="w3review" name="w3review" rows="7"
+            cols="50" placeholder="إرسل رسالتك هنا"></textarea>
         </div><br>
 
 
-          <div class="col-4">
-            <button [disabled]="!token" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3"> تأكيـــد</button>
-          </div>
+        <div class="col-4">
+          <button [disabled]="!token" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3">
+            تأكيـــد</button>
+        </div>
 
-          <div class="col-6" *ngIf="unitDetails.priceType == 1">
-            <label for="Offer" class="visually-hidden">Offer</label>
-            <input [(ngModel)]="addedOffer.price" name="price" style="border:solid #FF8000;" type="text" class="form-control" id="Offer" placeholder="السعــر المقتــرح">
-          </div>
+        <div class="col-6" *ngIf="unitDetails.priceType == 1">
+          <label for="Offer" class="visually-hidden">Offer</label>
+          <input [(ngModel)]="addedOffer.price" name="price" style="border:solid #FF8000;" type="text"
+            class="form-control" id="Offer" placeholder="السعــر المقتــرح">
+        </div>
       </form>
 
 
@@ -123,23 +128,26 @@
 
   <h1 style="text-align: right;">أقترح لك </h1>
 
-    <div class="row">
-      <div class="col-4">
-        <img height="300" width="300" src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80" class="rounded " alt="...">
-      </div>
-      <div class="col-4">
+  <div class="row">
+    <div class="col-4">
+      <img height="300" width="300"
+        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
+        class="rounded " alt="...">
+    </div>
+    <div class="col-4">
 
-        <img height="300" width="300" src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80" class="rounded " alt="...">
-      </div>
-      <div class="col-4">
+      <img height="300" width="300"
+        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
+        class="rounded " alt="...">
+    </div>
+    <div class="col-4">
 
-        <img height="300" width="300" src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80" class="rounded " alt="...">
-      </div>
+      <img height="300" width="300"
+        src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80"
+        class="rounded " alt="...">
+    </div>
   </div>
 </div>
 
 <!-- <img src="{{unitDetails.coverImgageSrc}}" alt="">
 <img src="http://localhost:5219/Images/123.jpg" alt=""> -->
-
-
-
