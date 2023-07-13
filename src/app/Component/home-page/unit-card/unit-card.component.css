@@ -18,8 +18,8 @@ a{
 } */
 .map,.heart{
   background-color: #e2e2e2;
-  padding:0.5% 1%;
-  font-size: 20px;
+  padding:0.5% 2%;
+  font-size: 16px;
   text-align: center;
   cursor: pointer;
 }
@@ -38,11 +38,6 @@ a{
   top: 10px;
   left: 3%;
   color: #ff8000;
-}
-.heart:hover{
- &.map{
-  color: #131313;
- }
 }
 .name{
   margin: -.9rem 0 -.3rem 0 ;
@@ -93,20 +88,16 @@ height: 50%;
   font-size: small;
 }
 
-::ng-deep{
-.pagination-next{
-  display: none !important;
-}
-li .current{
-  background-color: #ff8000 !important;
-}
-.ngx-pagination .current {
-  padding: 0.1875rem 0.625rem;
-  background: #e88621 !important;
-  color: #fefefe;
-  cursor: default;
-}
 
+
+.btnNumber{
+  color: #131313;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 10px;
 }
 
 

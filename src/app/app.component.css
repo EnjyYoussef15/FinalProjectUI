@@ -67,6 +67,9 @@ background-color: #E2E2E2;
 *[_ngcontent-ng-c1114982685] {
   font-size: 23px !important;
 }
+i{
+  font-size: 25px;
+}
 /* .signin{
   position: absolute;
   left: 15%;

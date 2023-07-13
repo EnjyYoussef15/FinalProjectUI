@@ -29,6 +29,8 @@ export class UnitDetailsComponent implements OnInit{
       unitBuildingID: 0,
       buyerID: '',
       ownerID: '',
+      buyerName:'',
+      ownerName:''
   }
 
 

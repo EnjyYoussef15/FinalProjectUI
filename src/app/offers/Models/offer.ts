@@ -4,5 +4,7 @@ export interface Offer {
   price: number;
   unitBuildingID: number;
   buyerID: string;
+  buyerName: string;
   ownerID: string;
+  ownerName:string;
 }

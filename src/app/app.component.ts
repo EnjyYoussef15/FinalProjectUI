@@ -9,9 +9,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+
   title = 'UIProject';
   userName:string = '';
   personalPhoto:any ;
+  isShowFooter:boolean=true;
 
   constructor(private router:Router,private services:HomePageService,private sanitizer: DomSanitizer){}
   ngOnInit(): void {
@@ -30,27 +32,27 @@ registerClick(){
 }
 
 logout(){
-  // this.router.navigate(['']);
   localStorage.removeItem('token');
-  console.log('token')
+   this.router.navigate(['/user/login']);
 }
 
-showChat:boolean=false;
-clickHere(){
-  this.showChat= !this.showChat;
-}
-closeChat(){
-  this.showChat=false;
-}
+
 
 token:string|null = localStorage.getItem('token');
 
-toAddUnit(){
-  if(!localStorage.getItem('token')){
-    this.router.navigate(['/user/register'])
-    // this.router.navigate(['/unit/add']);
-  }
-  // else this.router.navigate(['/user/register'])
+
+
+showFooter(){
+  this.isShowFooter=true;
+}
+hideFooter(){
+  this.isShowFooter=false;
+}
+
+toChat(){
+  this.isShowFooter=false;
+  this.router.navigate(['chat/chat/'+'#']);
+  this.isShowFooter=false
 }
 }
 

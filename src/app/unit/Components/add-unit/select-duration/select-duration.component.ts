@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuPrice } from 'src/app/unit/Models/menu-price';
 import { UpdateDuration } from 'src/app/unit/Models/update-duration';
 import { UnitService } from 'src/app/unit/Services/unit.service';
@@ -19,7 +19,7 @@ export class SelectDurationComponent implements OnInit {
     unitType:0
   }
 
-  constructor(private route:ActivatedRoute,private services:UnitService){
+  constructor(private route:ActivatedRoute,private services:UnitService,private router:Router){
     this.route.paramMap.subscribe(params => {
       this.childData = params.get('data');
       console.log('Received data:', this.childData);
@@ -70,6 +70,7 @@ token:(stripeoken:any)=>{
       next:(value)=>{
         console.log(value);
         alert("بانتظار المراجعة");
+        this.router.navigate(['homepage']);
       }
     });
   }

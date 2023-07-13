@@ -18,6 +18,7 @@ export class LoginComponent {
   }
 loginForm:FormGroup;
   constructor(private servces:UserService,private router:Router){
+    localStorage.removeItem('token')
     this.loginForm=new FormGroup({
       Email:new FormControl('',[Validators.required,Validators.email]),
       Password:new FormControl('',[Validators.required]),

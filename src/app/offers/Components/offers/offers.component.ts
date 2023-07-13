@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Offer } from '../../Models/offer';
 import { OffersService } from '../../Services/offers.service';
+import { Chat, UsersFire } from 'src/app/chat/Models/chat';
+import { ChatService } from 'src/app/chat/Services/chat.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-offers',
@@ -8,16 +11,21 @@ import { OffersService } from '../../Services/offers.service';
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent implements OnInit{
+  users:UsersFire[] = [];
   offers: Offer[] = [];
   ngOnInit(): void {
-this.getOffers();
+this.getUsersFromFirebase().then(()=>{
+  this.getOffers();
+});
   }
-   constructor(private offerService: OffersService) { }
+   constructor(private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
 
    getOffers(){
     this.offerService.getOffers().subscribe({
       next: (offers: Offer[]) => {
         this.offers = offers;
+        console.log("Offers",offers);
+
       },
       error: (error) => {
         console.log(error);
@@ -25,13 +33,44 @@ this.getOffers();
     });
    }
 
+   AddUserToFirebaseComponenet(offer:Offer){
+
+    for (let index = 0; index < this.users.length; index++) {
+      console.log("In Loop Users ID ", this.users[index].UserID);
+      console.log("In Loop Users ID ", offer.buyerID);
+       if(this.users[index].UserID==offer.buyerID){
+        console.log("This user is already registered");
+        this.sendMessage(offer);
+       return;
+      }
+    }
+    console.log("This user is Not registered");
+       this.chatServices.addUser(offer.buyerID).then(()=>{
+        this.sendMessage(offer);
+       });
+  }
+
+  async getUsersFromFirebase(){
+    this.chatServices.getUsers().subscribe({
+      next:(value)=>{
+       value.map((e:any)=>{
+         this.users.push( e.payload.doc.data());
+        });
+      }
+    });
+  }
 
 
-   startChat(offer: Offer) {
-    const ownerID = offer.ownerID;
-    const buyerID = offer.buyerID;
-
-    console.log(`Start chat between Owner: ${ownerID} and Buyer: ${buyerID}`);
+   sendMessage(offer: Offer) {
+    const chat:Chat={
+      recieverID: offer.buyerID,
+      dateTime:new Date,
+      senderID: offer.ownerID,
+      message:'مرحبا يرجي التواصل لاتمام التعاقد'
+    }
+    this.chatServices.sendMessage(chat).then(()=>{
+      this.router.navigate(['chat/chat/'+offer.buyerID]);
+    });
   }
 
     deleteOffer(offerId: number): void {

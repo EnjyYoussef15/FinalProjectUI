@@ -1,27 +1,28 @@
 <h1 style="text-align: right;">: العــروض</h1>
 <hr>
 
-<div class="container" *ngIf="offers">
-
-
+<div class="container data" *ngIf="offers.length>0">
 <div class="alert" role="alert"  *ngFor="let offer of offers">
   <p>
-    لقد أرسل لك {{ offer.buyerID }} : <br>
-    الرسالة : {{ offer.message }} <br>
-    السعر : {{ offer.price }}
+    <span class="text-title">لقد أرسل لك : </span>
+    <span class="text-content">{{ offer.buyerName }}</span>
+    <br>
+     <span class="text-title">الرسالة : </span>
+     <span class="text-content">{{ offer.message }}</span>
+    <br>
+    <span *ngIf="offer.price>0">
+      <span class="text-title"> السعر : </span>
+      <span class="text-content" >{{ offer.price }}</span>
+    </span>
   </p>
   <div>
-    <span>
-      <button type="button" class="btn btn-success" (click)="startChat(offer)
-      ">Ok</button>
-    </span>
-    <span>
-      <button type="button" class="btn btn-danger" (click)="deleteOffer(offer.id)"
-      >Cancel</button>
-    </span>
+      <button type="button" class="btn" style="background-color: #ff8000; color: white; font-weight: bold;" (click)="AddUserToFirebaseComponenet(offer)
+      "> تواصل</button>
+      <span style="margin:0 5px ;"></span>
+      <button type="button" style="background-color: #a8a8a8; color: white; font-weight: bold;" class="btn" (click)="deleteOffer(offer.id)"
+      > الغاء</button>
   </div>
 </div>
-
 </div>
 <div class="container" *ngIf="offers.length<=0">
   <div style="text-align: center; font-weight: bolder; font-size: 7rem;" class="h2">لا يوجد بيانات</div>

@@ -3,7 +3,7 @@
     <form [formGroup]="unitForm">
       <div class="mb-3">
         <label for="dropdown">تصنيف الوحدة</label>
-        <select formControlName="CategoryId" id="CategoryId" class="form-control"
+        <select formControlName="CategoryId" id="CategoryId" class="form-control" (change)="selectCategory($event)"
           [ngClass]="{
             'is-invalid': (unitForm.get('CategoryId')?.touched || unitForm.get('CategoryId')?.dirty) && unitForm.get('CategoryId')?.invalid
           }">
@@ -258,5 +258,4 @@
     </form>
   </div>
 
-      <router-outlet></router-outlet>
 

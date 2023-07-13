@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Addunit } from '../Models/addunit';
 import { Observable } from 'rxjs';
@@ -35,8 +35,12 @@ export class UnitService {
       return this.http.put<any>(this.baseUrl+"Unit/setDuration/"+localStorage.getItem('token'),updateDuration);
     }
 
-    getAllUnits():Observable<UnitCard[]>{
-      return this.http.get<UnitCard[]>(this.baseUrl+"Unit/getUnits");
+    getAllUnits(pageNumber: number, pageSize: number):Observable<any>{
+
+      const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+      return this.http.get<UnitCard[]>(this.baseUrl+"Unit/getUnitsPagination",{params});
     }
 
     getFavorites(){

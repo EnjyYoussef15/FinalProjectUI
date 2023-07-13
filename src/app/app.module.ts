@@ -22,6 +22,7 @@ import { SearchComponent } from './Component/home-page/search/search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { FormsModule } from '@angular/forms';
+import {AngularFireModule} from '@angular/fire/compat';
 
 
 
@@ -34,6 +35,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 
 
 
@@ -73,6 +79,7 @@ import { MatCardModule } from '@angular/material/card';
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,4 +3,18 @@
   direction: rtl;
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
+  font-size: 15px;
+}
+.text-title{
+  font-size: 18px;
+  font-weight: bolder;
+}
+.text-content{
+  font-size: 15px;
+  font-weight: bold;
+}
+.data{
+  margin-top: 50px;
+  min-height: 500px;
 }

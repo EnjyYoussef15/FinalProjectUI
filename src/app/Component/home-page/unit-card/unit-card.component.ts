@@ -6,19 +6,7 @@ import { UnitCard } from 'src/app/unit/Models/unit-card';
 import { UnitService } from 'src/app/unit/Services/unit.service';
 
 
-const listAnimation = trigger('listAnimation', [
-  transition('* <=> *', [
-    query(':enter',
-      [style({visibility: 'hidden' }), stagger('200ms', animate('100ms ease-out', style({visibility: 'visible' })))],
-      { optional: true }
-    ),
-    // query(':leave',
 
-    //   animate('10ms', style({ visibility: 'hidden' })),
-    //   { optional: true}
-    // )
-  ])
-]);
 
 @Component({
   selector: 'app-unit-card',
@@ -28,28 +16,39 @@ const listAnimation = trigger('listAnimation', [
 
 export class UnitCardComponent implements OnInit{
 
+  totalCount: number = 0;
+  pageNumber: number = 1;
+  pageSize: number = 3;
+  pageElement=0;
+  buttonArray:number[]=[] ;
+
   unitCard:UnitCard[]=[];
   favorites:Favorites[]=[];
-  pCard:number=1;
-  itemsPerPageCard:number=6;
-  totalItemsCard:any;
+
 
 
   constructor(private services:UnitService,private router:Router){}
   ngOnInit(): void {
   this.getunitsComponent();
   this.getFavorites();
+this.pageElement=this.totalCount/this.pageSize;
+this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
+console.log("ButtonToArray",this.buttonArray);
 
   }
 
   getunitsComponent(){
-    this.services.getAllUnits().subscribe({
-      next:(value)=> {
-        this.unitCard=value;
-        console.log(value);
-console.log("UnitCard",this.unitCard);
-this.totalItemsCard=this.unitCard.length;
-      },
+    this.services.getAllUnits(this.pageNumber,this.pageSize).subscribe(response => {
+      this.unitCard = response.data;
+      this.totalCount = response.totalCount;
+      console.log("UnitCard", this.unitCard);
+      console.log("TotalCount",this.totalCount);
+      console.log("Count",this.pageElement);
+
+this.pageElement=Math.floor(this.totalCount/this.pageSize)+this.totalCount%this.pageSize;
+
+this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
+console.log("ButtonToArray",this.buttonArray);
     });
   }
 
@@ -88,6 +87,23 @@ checkFavorite(id:any):boolean{
   return false;
 }
 
+previousPage() {
+  if (this.pageNumber > 1) {
+    this.pageNumber--;
+    this.getunitsComponent();
+  }
+}
 
+nextPage() {
+  if (this.pageNumber * this.pageSize < this.totalCount) {
+    this.pageNumber++;
+    this.getunitsComponent();
+  }
+}
+
+setPage(pnumber:number){
+  this.pageNumber=pnumber;
+  this.getunitsComponent();
+}
 
 }
