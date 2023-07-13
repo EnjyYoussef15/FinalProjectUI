@@ -5,7 +5,6 @@ import { UnitCard } from '../../Models/unit-card';
 import { UnitType } from '../../Models/unit-type';
 import { TypePrice } from '../../Models/type-price';
 import { UnitService } from '../../Services/unit.service';
-import { UnitDetails } from '../../Models/unit-details';
 import { Favorites } from '../../Models/favorites';
 import { City } from '../../Models/unit';
 

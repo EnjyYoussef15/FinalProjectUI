@@ -12,18 +12,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SelectDurationComponent } from './Components/add-unit/select-duration/select-duration.component';
 import { UnitDetailsComponent } from './Components/unit-details/unit-details.component';
+import { UnitBuildingComponent } from './Components/unit-building/unit-building.component';
+import { AllUnitsCategoryComponent } from '../Component/home-page/category/all-units-category/all-units-category.component';
 
 const routes: Routes = [
   { path: 'addUnit', component: AddUnitComponent, canActivate: [userAuthGGuard] },
   { path: 'selectDuration', component: SelectDurationComponent },
-  { path: 'det/:id', component: UnitDetailsComponent }
+  { path: 'det/:id', component: UnitDetailsComponent },
+  {path: 'Allunits/:cityonly', component: UnitBuildingComponent, title: 'Unit List'},
+  {path: 'Allunits/:area/:unitType/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
+  {path: 'Allun/:id', component: AllUnitsCategoryComponent, title: 'Unit List'},
 ];
 
 @NgModule({
   declarations: [
     AddUnitComponent,
     SelectDurationComponent,
-    UnitDetailsComponent
+    UnitDetailsComponent,
+    UnitBuildingComponent,
+    AllUnitsCategoryComponent
   ],
   imports: [
     CommonModule,

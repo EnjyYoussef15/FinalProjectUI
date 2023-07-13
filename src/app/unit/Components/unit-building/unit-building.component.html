@@ -7,7 +7,7 @@
       <div class="container" style="text-align: start;margin-right: 5%;">
         <h2 style=" font-weight: bolder; text-align: start;"> {{title}}</h2>
         <div class="card co1-3" style="width: 18rem; display: inline-flex;"
-          *ngFor="let unit of UnitBuildBysearch | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
+          *ngFor="let unit of UnitBuildBysearch">
 
           <a href="unit/det/{{unit.id}}">
             <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
@@ -57,7 +57,6 @@
 
       </div>
       <div class="mt-8 py-5 flex justify-content items-center" style="text-align: center;">
-        <pagination-controls (pageChange)="pCard=$event"></pagination-controls>
       </div>
 
 
@@ -99,7 +98,7 @@
     <legend style="text-align: end;">
       <div class="container" style="text-align: start;margin-right: 5%;">
         <div class="card co1-3" style="width: 18rem; display: inline-flex;"
-          *ngFor="let unit of UnitBuildBycity | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
+          *ngFor="let unit of UnitBuildBycity">
           <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
           <div class="card-body">
@@ -143,7 +142,6 @@
         </div>
       </div>
       <div class="mt-8 py-5 flex justify-content items-center" style="text-align: center;">
-        <pagination-controls (pageChange)="pCard=$event"></pagination-controls>
       </div>
 
     </legend>
