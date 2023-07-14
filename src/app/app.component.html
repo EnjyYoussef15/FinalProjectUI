@@ -27,15 +27,15 @@
 
             </a>
 
-            <a (click)="registerClick()" *ngIf="userName ">
+            <a href="user/profile" *ngIf="userName ">
               <span style="color: black;" *ngIf="!personalPhoto">
                 <i class="material-icons">account_circle</i>
               </span>
 
-              <span style="color: black;" *ngIf="personalPhoto">
+              <span  style="color: black;" *ngIf="personalPhoto">
                 <img [src]="personalPhoto" width="25px" height="25px" style="border-radius: 50%;" alt="" srcset="">
               </span>
-              <span class="ms-2" style="color: black;">{{userName}}</span>
+              <span class="d-flex justify-content-start ms-5" style="color: black;">{{userName}}</span>
             </a>
           </span>
         </button>
@@ -55,7 +55,7 @@
       <a   href="offer/offers"><i class="fa fa-ticket"></i></a>
 
 
-      <a  href="#"><i class="fa fa-heart"></i></a>
+      <a  href="unit/favorites"><i class="fa fa-heart"></i></a>
 
       <a   href="unit/addUnit"><i class="fa fa-plus"></i></a>
 
