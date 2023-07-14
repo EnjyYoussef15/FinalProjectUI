@@ -19,14 +19,14 @@ export class ProfileService {
   updateProfile( ProfileUpdate:Profile)
   {
     return this.http.put<Profile>(this.baseApiUrl+ '/api/Profile/'+localStorage.getItem('token'), ProfileUpdate);
-    // return this.http.put<any>('http://localhost:5219/api/Profile/f617a460-d223-4b03-85e2-78503b6c7d6b', ProfileUpdate);
   }
 
+  // updateProfileImg( url:string)
+  // {
+  //   return this.http.put<any>(this.baseApiUrl+ '/api/Profile/img'+localStorage.getItem('token'), url);
+  // }
 
-  uploadPhoto(photo: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('photo', photo);
-
-    return this.http.post(`${this.baseApiUrl}/upload-photo`, formData);
+  updateProfileImg(formData: FormData): Observable<any> {
+    return this.http.put<any>(`${this.baseApiUrl}/api/Profile/img/${localStorage.getItem('token')}`, formData);
   }
 }

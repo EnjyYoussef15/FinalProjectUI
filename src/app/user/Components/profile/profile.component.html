@@ -25,13 +25,14 @@
   <div class="container-fluid mt--7">
     <div class="row">
       <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-        <form [formGroup]="profilePicForm">
+        <form [formGroup]="profileForm">
         <div class="card card-profile shadow">
           <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
               <div class="card-profile-image">
                 <a >
                   <img [src]="imageSrc || profileDetails.personalPhoto" class="rounded-circle">
+                  <input type="te" class="form-control" id="personalPhoto" name="personalPhoto" formControlName="personalPhoto" hidden>
                 </a>
 
               </div>
@@ -53,30 +54,22 @@
 
             </div>
             <div class="text-center">
-              <!-- <button href="#!" class="btn btn-sm btn-primary" type="file">تغير الصوره</button> -->
-              <!-- <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none">
+              <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none">
               <button class="btn" style="background-color: orange; color: white;" (click)="selectFile()">تغيير الصورة</button>
               <p>{{ selectedFile ? selectedFile.name : 'No file selected' }}</p>
-              <button type="submit" class="btn btn-sm btn-primary" (click)="saveChanges()">حفظ التغيرات</button>
 
-            <br> -->
+            <br>
               <div class="h5 font-weight-300">
                 <h3>
                   {{profileDetails.fullName}} <br>
                </h3>
               </div>
               <div class="h5 mt-4">
-
                <span class="font-weight-light">{{calculateAge(profileDetails.birthDate)}} سنة</span>
-
-              </div>
-              <div>
-
               </div>
               <hr class="my-4">
-              <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records
-                all of his own music.</p>
-              <a href="#">Show more</a> -->
+              <button type="submit" class="btn btn-sm btn-primary" (click)="uploadPhoto()">حفظ التغيرات</button>
+
             </div>
           </div>
         </div>
@@ -103,35 +96,36 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-FullName">الاسم</label>
-                      <input type="text" id="input-FullName" class="form-control form-control-alternative"
-                        placeholder="Username" name="fullName" formControlName="fullName" value="{{profileDetails.fullName}}" readonly>
+                        <label for="fullName" class="form-control-label" >الاسم</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" formControlName="fullName">
                     </div>
+
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <label class="form-control-label" for="input-email">عنوان البريد </label>
-                      <input type="email" id="input-email" class="form-control form-control-alternative"
-                        placeholder="jesse@example.com"  name="email" formControlName="email" value="{{profileDetails.email}}" readonly>
-                    </div>
+                        <label for="email" class="form-control-label" >عنوان البريد </label>
+                        <input type="email" class="form-control" id="email" name="email" formControlName="email" readonly>
+                      </div>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-Address">العنوان</label>
-                      <input type="text" id="input-Address" class="form-control form-control-alternative"
-                        placeholder="First name"  name="address" formControlName="address" value="{{profileDetails.address}}" readonly>
-                    </div>
+                        <label for="address" class="form-control-label" >العنوان  </label>
+                        <input type="address" class="form-control" id="address" name="address" formControlName="address">
+                        <input type="te" class="form-control" id="personalPhoto" name="personalPhoto" formControlName="personalPhoto" hidden>
+                        <input type="date" class="form-control" id="BirthDate" name="BirthDate" formControlName="BirthDate" hidden>
+                        <!-- <img [src]="imageSrc || profileDetails.personalPhoto" class="rounded-circle"> -->
+
+                      </div>
                   </div>
 
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-phone">الهاتف</label>
-                      <input type="text" id="input-phone" class="form-control form-control-alternative"
-                        placeholder="Last name"  name="phoneNumber" formControlName="phoneNumber" value="{{profileDetails.phoneNumber}}" readonly>
-                    </div>
+                        <label for="phoneNumber" class="form-control-label" >الهاتف  </label>
+                        <input type="phoneNumber" class="form-control" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+                      </div>
                   </div>
                 </div>
               </div>
@@ -149,19 +143,17 @@
                   </div> -->
                   <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-NID">الرقم القومي</label>
-                      <input id="input-NID" class="form-control form-control-alternative" placeholder="الرقم القومي"
-                         type="number" name="nid" formControlName="nid" value="{{profileDetails.nid}}" readonly>
+                         <label for="nid" class="form-control-label" >الرقم القومي</label>
+                         <input type="nid" class="form-control" id="nid" name="nid" formControlName="nid">
                     </div>
                   </div>
                 </div>
               </div>
               <hr class="my-4">
               <div class="col-4 text-right">
-                <!-- <a class="btn btn-sm btn-primary" (click)="saveChanges()">حفظ التغيرات</a>
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveChanges()">حفظ التغيرات</button>
+                <button type="submit" class="btn btn-sm btn-primary" (click)="UpdateProfile()">حفظ التغيرات</button>
                 &nbsp; &nbsp;
-                <a  class="btn btn-sm btn-primary">إلغاء</a> -->
+                <!-- <button  class="btn btn-sm btn-primary">إلغاء</button> -->
                 <a *ngIf="profileDetails.nid == null" href="user/verify"  class="btn btn-sm btn-primary">توثيق الحساب</a>
               </div>
 

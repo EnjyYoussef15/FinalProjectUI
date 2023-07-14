@@ -22,7 +22,7 @@ verifyUser:IVerifyAccount={
 
 verifyForm:FormGroup;
   constructor(private serives:UserService,private router:Router,private sanitizer:DomSanitizer) {
-this.verifyForm=new FormGroup({
+  this.verifyForm=new FormGroup({
   NID:new FormControl('',[Validators.required,Validators.minLength(14),Validators.maxLength(14)]),
   NIDPhoto:new FormControl('',[Validators.required]),
   PersonalPhoto:new FormControl('',[Validators.required]),
