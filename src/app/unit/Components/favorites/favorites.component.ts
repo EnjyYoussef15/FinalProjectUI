@@ -1,24 +1,19 @@
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UnitCard } from '../../Models/unit-card';
+import { Favorites } from '../../Models/favorites';
+import { UnitService } from '../../Services/unit.service';
 import { Router } from '@angular/router';
-import { Favorites } from 'src/app/unit/Models/favorites';
-import { UnitCard } from 'src/app/unit/Models/unit-card';
-import { UnitService } from 'src/app/unit/Services/unit.service';
-
-
-
 
 @Component({
-  selector: 'app-unit-card',
-  templateUrl: './unit-card.component.html',
-  styleUrls: ['./unit-card.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-
-export class UnitCardComponent implements OnInit{
+export class FavoritesComponent {
 
   totalCount: number = 0;
   pageNumber: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 10;
   pageElement=0;
   buttonArray:number[]=[] ;
 
@@ -42,10 +37,12 @@ console.log("ButtonToArray",this.buttonArray);
       this.unitCard = response.data;
       this.totalCount = response.totalCount;
       console.log("UnitCard", this.unitCard);
-      console.log("TotalCount",this.totalCount);
-      console.log("Count",this.pageElement);
+      console.log("TotalCount==>>",this.totalCount);
+      console.log("Count===>>>>",this.pageElement);
 
-      this.pageElement=Math.floor(this.totalCount/this.pageSize)+(this.totalCount%this.pageSize>0?1:0);
+this.pageElement=Math.floor(this.totalCount/this.pageSize)+(this.totalCount%this.pageSize>0?1:0);
+console.log("PageELement=====>>>" , this.pageElement);
+
 
 this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
 console.log("ButtonToArray",this.buttonArray);
@@ -107,3 +104,4 @@ setPage(pnumber:number){
 }
 
 }
+

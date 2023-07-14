@@ -66,6 +66,8 @@ this.chatForm.valueChanges.subscribe({
     this.chatServices.getUserFromAPI(userIds).subscribe({
       next:(data)=>{
   this.usersFromApi=data;
+  console.log("Users From API ====>>>> ",this.usersFromApi);
+
       }
     });
   }

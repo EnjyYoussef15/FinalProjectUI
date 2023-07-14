@@ -14,11 +14,13 @@ import { SelectDurationComponent } from './Components/add-unit/select-duration/s
 import { UnitDetailsComponent } from './Components/unit-details/unit-details.component';
 import { UnitBuildingComponent } from './Components/unit-building/unit-building.component';
 import { AllUnitsCategoryComponent } from '../Component/home-page/category/all-units-category/all-units-category.component';
+import { FavoritesComponent } from './Components/favorites/favorites.component';
 
 const routes: Routes = [
   { path: 'addUnit', component: AddUnitComponent, canActivate: [userAuthGGuard] },
   { path: 'selectDuration', component: SelectDurationComponent },
   { path: 'det/:id', component: UnitDetailsComponent },
+  { path: 'favorites', component: FavoritesComponent },
   {path: 'Allunits/:cityonly', component: UnitBuildingComponent, title: 'Unit List'},
   {path: 'Allunits/:area/:unitType/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
   {path: 'Allun/:id', component: AllUnitsCategoryComponent, title: 'Unit List'},
@@ -30,7 +32,8 @@ const routes: Routes = [
     SelectDurationComponent,
     UnitDetailsComponent,
     UnitBuildingComponent,
-    AllUnitsCategoryComponent
+    AllUnitsCategoryComponent,
+    FavoritesComponent
   ],
   imports: [
     CommonModule,
