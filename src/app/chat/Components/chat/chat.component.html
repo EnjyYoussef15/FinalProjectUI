@@ -31,7 +31,7 @@
           <small>{{ message.dateTime | datetimeFormat: 'dd/MM/yyyy' }}</small>
         </div>
 
-        <div class="d-flex justify-content-end mb-2 mx-auto" style="max-width: 80%;"  *ngIf="message.senderID!=myID">
+        <div class="d-flex justify-content-end mb-2 ms-5" *ngIf="message.senderID!=myID">
           <span class="p-3 rounded leftClass">
             <span class="leftIcon"></span>
             <p>{{ message.message }}</p>

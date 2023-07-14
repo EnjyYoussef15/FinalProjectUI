@@ -26,15 +26,15 @@
               <span class="ms-2" style="font-weight: 800; color: black;">تسجيل الدخول</span>
             </a>
 
-            <a (click)="registerClick()" *ngIf="userName ">
+            <a href="user/profile" *ngIf="userName ">
               <span style="color: black;" *ngIf="!personalPhoto">
                 <i class="material-icons">account_circle</i>
               </span>
 
-              <span style="color: black;" *ngIf="personalPhoto">
+              <span  style="color: black;" *ngIf="personalPhoto">
                 <img [src]="personalPhoto" width="25px" height="25px" style="border-radius: 50%;" alt="" srcset="">
               </span>
-              <span class="ms-2" style="color: black;">{{userName}}</span>
+              <span class="d-flex justify-content-start ms-5" style="color: black;">{{userName}}</span>
             </a>
           </span>
         </button>
