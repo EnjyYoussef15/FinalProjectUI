@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Route, RouterModule, Routes } from '@angular/router';
+import {  RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './Components/chat/chat.component';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { userAuthGGuard } from '../user/Guird/user-auth-g.guard';
 import { DatetimeFormatPipe } from './Pipes/datetime-format.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 
 
 const route:Routes=[{
-  path: 'chat/:{id}', component: ChatComponent,canActivate:[userAuthGGuard]
+  path: 'chat/:id', component: ChatComponent,canActivate:[userAuthGGuard]
 }];
 
 @NgModule({
@@ -21,10 +19,7 @@ const route:Routes=[{
   ],
   imports: [
     CommonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(route)
   ]
 })

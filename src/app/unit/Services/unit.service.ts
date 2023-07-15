@@ -9,7 +9,7 @@ import { UnitDetails } from '../Models/unit-details';
 import { City } from '../Models/unit';
 import { UnitType } from '../Models/unit-type';
 import { TypePrice } from '../Models/type-price';
-import { ICategoryWithBuilding } from '../Models/icategory';
+import { ICategory, ICategoryWithBuilding } from '../Models/icategory';
 
 @Injectable({
   providedIn: 'root'
@@ -69,9 +69,9 @@ export class UnitService {
       return this.http.get<City[]>(this.baseUrl+"Unit/getCities");
     }
 
-    getbySearch(area?:number,unittype?:UnitType,pricetype?:TypePrice,government?:string):Observable<UnitCard[]>
+    getbySearch(area?:number,category?:number,pricetype?:TypePrice,government?:string):Observable<UnitCard[]>
   {
-    return this.http.get<UnitCard[]>(this.baseUrl+'Unit/search/'+area+'/'+unittype+'/'+pricetype+'/'+government)
+    return this.http.get<UnitCard[]>(this.baseUrl+'Unit/search/'+area+'/'+category+'/'+pricetype+'/'+government)
   }
 
   getByCity(city:string)

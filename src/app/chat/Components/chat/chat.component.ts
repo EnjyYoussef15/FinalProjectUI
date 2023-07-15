@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from '../../Services/chat.service';
 import { Chat, Users, UsersFire } from '../../Models/chat';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ElementRef, Renderer2 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -12,6 +13,8 @@ import { ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit{
+
+
 
   @ViewChild('chatContainer', { static: false })
   chatContainer!: ElementRef;
@@ -25,28 +28,20 @@ export class ChatComponent implements OnInit{
   }
   chats:Chat[]=[];
 
-  inputMessage:any={
-    'inputChat':''
-  };
-  chatForm:FormGroup;
+
+userID:any;
+inputChat: string='';
 
 myID:string='';
-  constructor(private chatServices:ChatService,private elementRef: ElementRef, private renderer: Renderer2){
-    this.chatForm=new FormGroup({
-      inputChat:new FormControl('')
-    });
+  constructor(private chatServices:ChatService,private elementRef: ElementRef,private route:ActivatedRoute, private renderer: Renderer2){
+
   }
 
  async ngOnInit(): Promise<void> {
   await this.getUsersFromFirebase();
 this.myID=localStorage.getItem('token')!;
 
-this.chatForm.valueChanges.subscribe({
-  next:(emp)=>{
-    this.inputMessage=emp;
-  }
-});
-
+this.getID();
 }
 
 
@@ -74,6 +69,7 @@ this.chatForm.valueChanges.subscribe({
 
   selectUser(selectedUser:Users)
   {
+    this.userID=selectedUser.id;
     this.chats=[];
     this.userHeader=selectedUser;
     this.getChats(selectedUser.id);
@@ -123,13 +119,42 @@ this.chatForm.valueChanges.subscribe({
   sendMessageCommand(){
     const chat:Chat={
       dateTime:new Date,
-      message:this.inputMessage.inputChat,
+      message:this.inputChat,
       recieverID:this.userHeader.id,
       senderID:localStorage.getItem('token')!
     }
     console.log("Chat===>>",chat);
 
    this.chatServices.sendMessage(chat);
+   this.inputChat='';
   }
+
+
+
+
+  getID(){
+  this.route.paramMap.subscribe((params) => {
+
+    this.userID = params.get('id');
+    console.log("===== id ===",this.userID);
+
+    this.chatServices.getUserFromAPI(this.userID).subscribe({
+      next: (response) =>
+      {
+
+        this.userHeader = response[0];
+        console.log("UserHeaderFromParams===>>> ",this.userHeader);
+
+        // this.selectedImage = "http://localhost:5219/UnitImages/"+this.unitDetails.coverImageString;
+        // console.log("SelectedImage===>>> ",this.selectedImage);
+this.getChats(this.userID);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+
+    });
+  });
+}
 
 }

@@ -2,6 +2,7 @@
   <aside style="width: 30%;">
     <header>
       <input type="text" placeholder="search">
+      <br>
     </header>
     <ul>
       <li *ngFor="let user of usersFromApi let i=index" (click)="selectUser(user)">
@@ -13,7 +14,7 @@
     </ul>
   </aside>
   <main style="width: 70%; position: relative;" >
-    <header *ngIf="userHeader!=null">
+    <header *ngIf="userID!='#'">
       <img [src]="userHeader.personalImage" width="50px" height="50px" alt="">
       <div>
         <h2>{{userHeader.name}}</h2>
@@ -45,10 +46,14 @@
       </div>
     </ul>
     <div class="footer" style="position: fixed; bottom: 0; width: 100%; height: 11%; z-index: 10; background-color: #131313;">
-      <form [formGroup]="chatForm">
-        <input placeholder="Type your message" multiple formControlName="inputChat" name="inputChat">
-        <button [disabled]="chats.length<=0|| !inputMessage.inputChat" (click)="sendMessageCommand()" type="submit" class="btn btn-dark"><i class="fa fa-paper-plane" style="font-size: 30px; padding-right: 10px; color: #ff8000;"></i></button>
+      <form (ngSubmit)="sendMessageCommand()">
+        <input placeholder="اكتب رسالتك هتا" maxlength="50" autocomplete="off" [(ngModel)]="inputChat" name="inputChat">
+        <button [disabled]="!inputChat" type="submit" class="btn btn-dark">
+          <i class="fa fa-paper-plane" style="font-size: 30px; padding-right: 10px; color: #ff8000;"></i>
+        </button>
       </form>
+
+
 
        </div>
   </main>
