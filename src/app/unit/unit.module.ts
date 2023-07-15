@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'det/:id', component: UnitDetailsComponent },
   { path: 'favorites', component: FavoritesComponent },
   {path: 'Allunits/:cityonly', component: UnitBuildingComponent, title: 'Unit List'},
-  {path: 'Allunits/:area/:unitType/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
+  {path: 'Allunits/:area/:category/:priceType/:government', component: UnitBuildingComponent, title: 'Unit List'},
   {path: 'Allun/:id', component: AllUnitsCategoryComponent, title: 'Unit List'},
 ];
 

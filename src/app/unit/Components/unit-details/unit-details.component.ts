@@ -56,6 +56,7 @@ unitID:any;
       unitImagesString: ''
     }
 title?:string;
+cityonlyy?: string;
     selectedImage: String = '';
     constructor(private unitservice: UnitService,private route: ActivatedRoute,
        private offerservice : OffersService){
@@ -81,7 +82,7 @@ title?:string;
 
             this.unitDetails = response;
             console.log("UnitDetail===>>> ",this.unitDetails);
-
+this.cityonlyy=this.unitDetails.governamnet;
             this.selectedImage = "http://localhost:5219/UnitImages/"+this.unitDetails.coverImageString;
             console.log("SelectedImage===>>> ",this.selectedImage);
 

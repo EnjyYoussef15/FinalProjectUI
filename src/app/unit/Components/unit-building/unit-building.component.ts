@@ -7,6 +7,7 @@ import { TypePrice } from '../../Models/type-price';
 import { UnitService } from '../../Services/unit.service';
 import { Favorites } from '../../Models/favorites';
 import { City } from '../../Models/unit';
+import { object } from '@angular/fire/database';
 
 
 
@@ -22,16 +23,17 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
 @Input() government?: string;
 @Input()  area?: number;
-@Input()  unitType?: UnitType;
+@Input()  category?: number;
 @Input()  priceType?: TypePrice;
+// @Input() cityonlyy?:string;
 @Input() title?:string;
+
 
 
   // product?: UnitCard;
 
   UnitBuildBysearch :UnitCard[]=[];
   UnitBuildBycity :UnitCard[]=[];
-  UnitBuildByCategory :UnitCard[]=[];
 
 
 
@@ -44,9 +46,8 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
   // government?: string;
   // area?: number;
-  // unitType?: UnitType;
+  // category?: number;
   // priceType?: TypePrice;
-
   cityonlyy?:string;
 
   pCard:number=1;
@@ -60,50 +61,59 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.government = params.get('government')!;
       this.area =Number( params.get('area'))!;
-      this.unitType =Number( params.get('unittype'))!;
+      this.category =Number( params.get('category'))!;
       this.priceType =Number( params.get('pricetype'))!; });
 
 
-      this.service.getbySearch(this.area,this.unitType,this.priceType,this.government).subscribe
+      this.service.getbySearch(this.area,this.category,this.priceType,this.government).subscribe
     ({ next : catogries => {
         this.UnitBuildBysearch=catogries;
         // this.UnitBuildBysearch.forEach(c=>{console.log( c.price)});
-        this.totalItemsCard=this.UnitBuildBysearch.length;
+        // this.totalItemsCard=this.UnitBuildBysearch.length;
+        console.log("search lenght", this.UnitBuildBysearch);
+        console.log(this.UnitBuildBysearch.length);
 
+        console.log("in search");
       },
       error : err => console.log(err)
     });
 ///////////////////////////////////////////////////////////////////////////////////////////
 
+
     this.route.paramMap.subscribe(param => {
       this.cityonlyy = param.get('cityonly')!;
+    //  this.government = param.get('cityonly')!;
+        console.log(this.cityonlyy);
     });
+    console.log(this.cityonlyy);
+
     if(this.cityonlyy != null)
-    {
-      this.service.getByCity(this.cityonlyy).subscribe
-      ({
-        next: (response) => {
-          this.UnitBuildBycity = response;
-          console.log(this.UnitBuildBycity);
-        },
+    this.service.getByCity(this.cityonlyy).subscribe
+    ({
+      next: (response) => {
+        this.UnitBuildBycity = response;
+    this.getCitiesComponent(this.cityonlyy);
 
-        error: err =>  console.log(err)
+        console.log(this.UnitBuildBycity.length);
+                console.log("in city only");
 
-      });
-    }
-  this.getCitiesComponent();
+      },
+      error: err =>  console.log("error is"+err)
+
+    });
+
 
   }
 
   city:City[]=[];
-onecity?:City;
-getCitiesComponent(){
-this.service.getCities().subscribe({
-  next:(value)=>{
+  onecity?:City;
+  getCitiesComponent(s?: string){
+  this.service.getCities().subscribe({
+    next:(value)=>{
     this.city=value;
-    this.onecity= this.city.find(m=>m.cityName==this.cityonlyy)
-    console.log("City",this.city);
-
+    this.onecity= this.city.find(m=>m.cityName==s);
+    console.log("City", this.city.find(m=>m.cityName==s));
+    console.log(this.onecity);
   }
 });
 }

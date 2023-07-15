@@ -17,21 +17,22 @@
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
               </svg></button> -->
+
             <mat-form-field class="col-2">
-              <mat-label>Type</mat-label>
+              <mat-label>تصنيف الوحدة</mat-label>
               <mat-select [(value)]="UnitTypeselected" [formControl]="unitControl">
-                <mat-option>--</mat-option>
-                <mat-option (click)="displayFn()" *ngFor="let unit of UnitTypes" [value]="unit.value ">
-                  {{unit.label}}
+                <!-- <mat-option>--</mat-option> -->
+                <mat-option (click)="displayFn()" *ngFor="let unit of Category" [value]="unit.id ">
+                  {{unit.name}}
                 </mat-option>
               </mat-select>
               <!-- <mat-error *ngIf="unitControl.hasError('required')">حدد النوع من اجل بحث افضل</mat-error> -->
             </mat-form-field>
 
             <mat-form-field class="col-2">
-              <mat-label>price</mat-label>
+              <mat-label style="bottom: 15px;">السعر</mat-label>
               <mat-select [(value)]="UnitPRICEselected" [formControl]="priceControl">
-                <mat-option>--</mat-option>
+                <!-- <mat-option>--</mat-option> -->
                 <mat-option (click)="displayFn()" *ngFor="let price of PriceTypes" [value]="price.value ">
                   {{price.label}}
                 </mat-option>
@@ -42,9 +43,9 @@
 
             &nbsp;
             <mat-form-field class="col-3">
-              <mat-label>Area</mat-label>
+              <mat-label style="bottom: 15px;">المساحه</mat-label>
               <mat-select [(value)]="UnitAreaselected" [formControl]="areaControl">
-                <mat-option>--</mat-option>
+                <!-- <mat-option>--</mat-option> -->
                 <mat-option (click)="displayFn()" *ngFor="let animal of area" [value]="animal.value ">
                   {{animal.label}}
                 </mat-option>
@@ -54,7 +55,7 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field class="col-3">
-              <input matInput placeholder="Search for a Government" [matAutocomplete]="auto" [formControl]="cityControl"
+              <input matInput placeholder="أبحث في المحافظات" [matAutocomplete]="auto" [formControl]="cityControl"
                 (change)="onGovernorateChange($event)">
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
                 <mat-option *ngFor="let option of jsonData" [value]="option.governorate_name_ar">
@@ -68,7 +69,7 @@
             border-radius: 20px;
             width: 15%;" type="submit">
               <a *ngIf="!UnitTypeselectedOption && !UnitAreaselectedOption && !UnitPRICEselectedOption"
-                href="/unit/Allunits/{{cityonlyy}}">
+                href="/unit/Allunits/{{cityselectedOption}}">
                 Search </a>
               <a *ngIf="UnitTypeselectedOption || UnitAreaselectedOption || UnitTypeselectedOption"
                 href="/unit/Allunits/{{UnitAreaselectedOption}}/{{UnitTypeselectedOption}}/{{UnitPRICEselectedOption}}/{{cityselectedOption}}">

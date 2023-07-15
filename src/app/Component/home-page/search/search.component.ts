@@ -11,6 +11,7 @@ import { map, startWith } from 'rxjs/operators';
 
 
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { ICategory } from 'src/app/unit/Models/icategory';
 
 
 
@@ -33,6 +34,11 @@ export class SearchComponent implements OnInit
 
   ngOnInit(): void
    {
+    this.services.getCategory().subscribe({
+      next:(value)=>{
+        this.Category=value;
+      },
+    });
 
     this.filteredOptions = this.cityControl.valueChanges.pipe(
 
@@ -78,15 +84,7 @@ onGovernorateChange(event:any): void
 
   selectFormControl = new FormControl('', Validators.required);
 
-  UnitTypeselected?:number;
-  UnitTypeselectedOption:any;
 
-  unitControl = new FormControl<UnitType|null>(null, Validators.required);
-
-  UnitTypes = [
-    {value: UnitType.Sale, label: 'Sale'},
-    {value: UnitType.Rent, label: 'Rent'},
-  ];
 
 
   UnitPRICEselected?:number;
@@ -95,9 +93,21 @@ onGovernorateChange(event:any): void
   priceControl = new FormControl<TypePrice|null>(null, Validators.required);
 
   PriceTypes = [
-    {value: TypePrice.Fixed, label: 'Fixed'},
-    {value: TypePrice.Dynamic, label: 'Dynamic'},
+    {value: TypePrice.Fixed, label: 'ثابت'},
+    {value: TypePrice.Dynamic, label: 'متغير'},
   ];
+
+  UnitTypeselected?:number;
+  UnitTypeselectedOption:any;
+
+  unitControl = new FormControl<ICategory|null>(null, Validators.required);
+
+  // UnitTypes = [
+  //   {value: UnitType.Sale, label: 'Sale'},
+  //   {value: UnitType.Rent, label: 'Rent'},
+  // ];
+  Category:ICategory[] = [];
+
 
   UnitAreaselected?:number;
   UnitAreaselectedOption?:any;
@@ -119,7 +129,9 @@ onGovernorateChange(event:any): void
 
 
   displayFn() {
-    this.UnitTypeselectedOption = this.UnitTypes.find(animal => animal.value === this.UnitTypeselected)?.value;
+    // this.UnitTypeselectedOption = this.UnitTypes.find(animal => animal.value === this.UnitTypeselected)?.value;
+
+    this.UnitTypeselectedOption = this.Category.find(animal => animal.id === this.UnitTypeselected)?.id;
     this.UnitPRICEselectedOption = this.PriceTypes.find(animal => animal.value === this.UnitPRICEselected)?.value;
     this.UnitAreaselectedOption = this.area.find(animal => animal.value === this.UnitAreaselected)?.value;
 

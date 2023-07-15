@@ -21,5 +21,6 @@ export interface UnitDetails {
   minPrice?:number
   maxPrice?:number
   unitImagesString?:string
+  categoryId?:number;
 }
 
