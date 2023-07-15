@@ -8,6 +8,8 @@ import { UnitType } from '../../Models/unit-type';
 import { TypePrice } from '../../Models/type-price';
 import { UnitCard } from '../../Models/unit-card';
 import { Favorites } from '../../Models/favorites';
+import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
+import { Notifications } from 'src/app/Component/home-page/NotificatioModel/notifications';
 
 
 @Component({
@@ -59,7 +61,7 @@ title?:string;
 cityonlyy?: string;
     selectedImage: String = '';
     constructor(private unitservice: UnitService,private route: ActivatedRoute,
-       private offerservice : OffersService){
+       private offerservice : OffersService,private notificationServices:NotificationsService){
 
        }
 
@@ -113,6 +115,14 @@ this.cityonlyy=this.unitDetails.governamnet;
 
       this.offerservice.addOffer(this.addedOffer).subscribe({
         next: (value) => {
+          const notification:Notifications={
+            date:new Date,
+            location:'offer/offers',
+            message:'لقد تلقيت عرضا جديدا اذهب الي العروض لرؤية احدث العروض المرسلة',
+            starus:false,
+            userId:this.addedOffer.ownerID
+          }
+this.notificationServices.sendNotification(notification)
           alert("Added offer"),
           this.addedOffer.message = '';
           this.addedOffer.price = 0;
@@ -141,5 +151,7 @@ this.cityonlyy=this.unitDetails.governamnet;
     //     error: (err) => console.log(err)
     //   })
     // }
+
+
 
 }

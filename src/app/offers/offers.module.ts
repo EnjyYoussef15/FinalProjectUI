@@ -6,7 +6,7 @@ import { OffersComponent } from './Components/offers/offers.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes:Routes=[
-  {path:'offers',component:OffersComponent,canActivate:[userAuthGGuard]}
+  {path:'offers/:id',component:OffersComponent,canActivate:[userAuthGGuard]}
 ]
 
 @NgModule({

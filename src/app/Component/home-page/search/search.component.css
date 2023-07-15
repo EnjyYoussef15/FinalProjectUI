@@ -53,6 +53,6 @@ a{
   cursor: pointer;
   width: calc((100% - 172px) / 6);
   min-width: 160px;
-  height: 55px;
-  gap: 4px;
+  /* height: 55px;
+  gap: 4px; */
 }

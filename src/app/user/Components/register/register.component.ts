@@ -3,6 +3,7 @@ import { IUser } from '../../Models/iuser';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { GlobalConfig, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit{
     BirthDate:'',
   }
 userForm:FormGroup;
-  constructor(private servces:UserService,private router:Router){
+  constructor(private servces:UserService,private router:Router,private toastr: ToastrService){
     this.userForm=new FormGroup({
       FullName:new FormControl('',[Validators.required,Validators.minLength(8)]),
       Email:new FormControl('',[Validators.required,Validators.email]),
@@ -28,6 +29,8 @@ userForm:FormGroup;
       PhoneNumber:new FormControl('',[Validators.required]),
       BirthDate:new FormControl(this.maxDate,[Validators.required])
     });
+
+
   }
   ngOnInit(): void {
     this.userForm.valueChanges.subscribe({
@@ -40,10 +43,11 @@ userForm:FormGroup;
   registerComponent(){
     this.servces.register(this.user).subscribe({
       next:(user)=>{
-        alert("تم التسجيل بنجاح");
+        this.toastr.success('مرحبا بك في عائلة سكني تم تسجيل الدخول بنجاح');
         this.router.navigate(['/user/verify']);
       },
-      error(err) {
+      error:(err)=> {
+        this.toastr.error('عفوا هذا الايميل مستخدم من قبل ',);
         console.log(err);
       },
     });
