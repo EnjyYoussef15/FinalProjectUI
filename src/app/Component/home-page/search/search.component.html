@@ -8,7 +8,7 @@
         <h2 style="font-size: 35px; color: white;">أبحث عن منزلك الجديد</h2>
         <p style="color: white;">هنا يمكنك المقارنه وايجاد العديد من الاقتراحات تبعا لأولوياتك</p>
 
-        <form class="container" action="" style="background-color:#e2e2e2; padding-top: 20px; padding-bottom: -10px; border-radius: 15px;">
+        <form class="container" action="" style="background-color:#e2e2e2; padding-top: 20px; padding-bottom: -50px; border-radius: 15px;">
           <div class="row">
             <!-- <button class="btn text-light-emphasis col-2" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="100" fill="orange" class="bi bi-search"
@@ -54,7 +54,7 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field class="col-3">
-              <input matInput class="btn rounded" style="border-color: black;" placeholder="Search for a Government" [matAutocomplete]="auto" [formControl]="cityControl">
+              <input matInput class="btn rounded" style="border-color: black;" [matAutocomplete]="auto" [formControl]="cityControl">
               <input matInput placeholder="أبحث في المحافظات" [matAutocomplete]="auto" [formControl]="cityControl"
                 (change)="onGovernorateChange($event)">
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">

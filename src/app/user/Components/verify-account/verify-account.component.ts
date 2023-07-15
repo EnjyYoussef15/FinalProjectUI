@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-verify-account',
@@ -21,7 +22,7 @@ verifyUser:IVerifyAccount={
 };
 
 verifyForm:FormGroup;
-  constructor(private serives:UserService,private router:Router,private sanitizer:DomSanitizer) {
+  constructor(private toaster:ToastrService,private serives:UserService,private router:Router,private sanitizer:DomSanitizer) {
   this.verifyForm=new FormGroup({
   NID:new FormControl('',[Validators.required,Validators.minLength(14),Validators.maxLength(14)]),
   NIDPhoto:new FormControl('',[Validators.required]),
@@ -51,7 +52,7 @@ verifyForm:FormGroup;
 
     this.serives.verifyAccount(formData).subscribe({
     next:(value)=> {
-      alert("سيتم مراجعة بياناتك في خلال 48 ساعه");
+      this.toaster.info("سيتم مراجعة بياناتك في خلال 48 ساعه","تأكيد الهوية")
       this.router.navigate(['/homePage'])
       console.log(value);
 
@@ -86,7 +87,8 @@ this.urlPersonal=undefined;
     this.urlNID=undefined;
        }
 notNow(){
-  this.router.navigate(['/homePage'])
+  this.router.navigate(['/homePage']);
+  this.toaster.warning('لم يتم تأكيد حسابك يرجي تأكيد الحساب لتتمكن من استخدام المواقع بالكامل','تأكيد الهوية')
 }
   }
 

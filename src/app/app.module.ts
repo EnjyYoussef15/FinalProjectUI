@@ -40,6 +40,8 @@ import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -67,7 +69,12 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CommonModule,
-
+    ToastrModule.forRoot({
+        timeOut: 10000,
+        positionClass: 'toast-top-full-width',
+        preventDuplicates: true,
+      }),
+     // ToastrModule added
     MatAutocompleteModule,
     MatFormFieldModule,
     MatSelectModule,
