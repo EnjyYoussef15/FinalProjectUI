@@ -18,7 +18,7 @@ import { object } from '@angular/fire/database';
   templateUrl: './unit-building.component.html',
   styleUrls: ['./unit-building.component.css']
 })
-export class UnitBuildingComponent implements OnInit ,OnDestroy {
+export class UnitBuildingComponent implements OnInit  {
 
 
 @Input() government?: string;
@@ -44,15 +44,9 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
     this.title="أحدث الوحدات";
   }
 
-  // government?: string;
-  // area?: number;
-  // category?: number;
-  // priceType?: TypePrice;
   cityonlyy?:string;
 
-  pCard:number=1;
-  itemsPerPageCard:number=4;
-  totalItemsCard:any;
+
   favorites:Favorites[]=[];
 
 
@@ -68,8 +62,6 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
       this.service.getbySearch(this.area,this.category,this.priceType,this.government).subscribe
     ({ next : catogries => {
         this.UnitBuildBysearch=catogries;
-        // this.UnitBuildBysearch.forEach(c=>{console.log( c.price)});
-        // this.totalItemsCard=this.UnitBuildBysearch.length;
         console.log("search lenght", this.UnitBuildBysearch);
         console.log(this.UnitBuildBysearch.length);
 
@@ -102,11 +94,13 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
 
     });
 
+    this.getFavorites();
 
-  }
+}
 
   city:City[]=[];
   onecity?:City;
+
   getCitiesComponent(s?: string){
   this.service.getCities().subscribe({
     next:(value)=>{
@@ -117,48 +111,7 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
   }
 });
 }
-//////////////////////////////////////////////////////////////////////
-  pageName : string = "Catogry List";
-  // list show
-  showlis :boolean = false;
-  // image show
-  showImg :boolean = false;
 
-
-
-
-
-
-  showImage(){
-    this.showImg = !this.showImg;
-  }
-  limit = 4;
-
-  showList(){
-    this.limit += 4;
-    // if(this.limit >= this.UnitBuildBysearch.length-1)
-    // {
-    //   this.showlis = !this.showlis;
-    // }
-
-    // window.scrollTo(0, 0);
-  }
-
-
-  onratclick(message:string):void
-  {
-    this.pageName = "Catogry List " + message;
-  }
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
-  loadData(){
-    if(this.UnitBuildBysearch.length < this.limit)
-    {
-      this.limit += 4;
-    }
-  }
   togleFavorites(id:number){
     if(this.checkFavorite(id)){
       this.favorites = this.favorites.filter(item => item.unitID !== id);
@@ -174,6 +127,8 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
     }
 
     getFavorites(){
+      console.log("Begin Favorites");
+
       this.service.getFavorites().subscribe({
         next:(value)=> {
           this.favorites=value;
@@ -194,19 +149,4 @@ export class UnitBuildingComponent implements OnInit ,OnDestroy {
       return false;
     }
 
-
-  // currentPage = 1;
-  // pageSize = 10;
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll(event: any) {
-  //   const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
-  //   const body = document.body, html = document.documentElement;
-  //   const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
-  //   const windowBottom = windowHeight + window.pageYOffset;
-
-  //   if (windowBottom >= docHeight) {
-  //     this.currentPage++;
-  //     this.loadData();
-  //   }
-  // }
 }

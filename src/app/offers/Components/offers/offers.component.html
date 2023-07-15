@@ -28,3 +28,14 @@
   <div style="text-align: center; font-weight: bolder; font-size: 7rem;" class="h2">لا يوجد بيانات</div>
   <img src="../../../../assets/Images/notFound.jpg" width="70%" height="600px" alt="" srcset="">
 </div>
+
+
+<button class="btn btn-primary" (click)="openPopup()">Open Dialoge</button>
+<div class="popup-overlay" *ngIf="isPopupVisible" (click)="closePopup()"></div>
+
+<div class="popup" [ngClass]="{ 'visible': isPopupVisible }">
+  <h2>Popup Content</h2>
+  <p>This is the popup content.</p>
+  <button (click)="closePopup()">Close</button>
+</div>
+

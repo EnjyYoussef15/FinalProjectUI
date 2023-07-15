@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark" style="position: relative;">
   <div class="container-fluid">
     <a class="navbar-brand" href="homepage" style="text-align: right;">
       <img src="../assets/Images/logo.png" alt="" height="7%" width="5%" class="d-inline-block align-text-top">
@@ -55,12 +55,16 @@
         </button>
       </mat-menu>
 
-      <a href="#"><i class="fa fa-bell"></i></a>
+      <a (click)="toggileNotification()">
+        <i class="fa fa-bell" style="position: relative;">
+          <span *ngIf="count>0" class="rounded-circle" style="position: absolute; top: -10px; right: -3px; background-color: red; font-size: 13px; padding: 3px 5px;">{{count}}</span>
+        </i>
+      </a>
 
       <a (click)="toChat()"><i class="fa fa-envelope text-warning"></i></a>
 
 
-      <a href="offer/offers"><i class="fa fa-ticket"></i></a>
+      <a href="offer/offers/'#'"><i class="fa fa-ticket"></i></a>
 
 
       <a href="unit/favorites"><i class="fa fa-heart"></i></a>
@@ -70,8 +74,24 @@
     </div>
   </div>
 
+  <div *ngIf="showNotification" class="notification">
+    <div style="background-color: #e2e2e2; margin-bottom: 5px;" class="notifications-item" *ngFor="let item of notifications; let i=index">
+      <a [href]="item.location+'/'+notificationsId[i]" class="notification-item rounded"
+      [ngStyle]="{ 'background-color': item.starus ? 'white' : '#e2e2e2'}"
+       style="color: black; margin-bottom: 10px;">
+        <p>{{item.message}}</p>
+        <small style="float: left;margin-left: 10px; font-size: 12px; color:#ff8000 ">{{item.starus?'مقرؤة':'غير مقرؤه'}}</small>
+        <small style="float: right;margin-right: 10px; font-size: 12px; color: rgb(58, 56, 56);">2023-07-15 4:15 pm</small>
+     <br>
+        <hr  style="border: solid .25px; color: black;">
+      </a>
+      <!-- <hr  style="border: solid;background-color: ;"> -->
+    </div>
 
+  </div>
 </nav>
+
+
 
 <router-outlet></router-outlet>
 

@@ -4,6 +4,7 @@ import { OffersService } from '../../Services/offers.service';
 import { Chat, UsersFire } from 'src/app/chat/Models/chat';
 import { ChatService } from 'src/app/chat/Services/chat.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
 
 @Component({
   selector: 'app-offers',
@@ -16,9 +17,10 @@ export class OffersComponent implements OnInit{
   ngOnInit(): void {
 this.getUsersFromFirebase().then(()=>{
   this.getOffers();
+  this.updateNotifications();
 });
   }
-   constructor(private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
+   constructor(private notificationServices:NotificationsService,private route:ActivatedRoute,private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
 
    getOffers(){
     this.offerService.getOffers().subscribe({
@@ -84,6 +86,33 @@ this.getUsersFromFirebase().then(()=>{
         }
       });
     }
+
+
+    updateNotifications(){
+      this.route.paramMap.subscribe((params) => {
+
+        const id = params.get('id');
+        console.log("===== id ===",id);
+
+        this.notificationServices.updateNotification(id!)
+        });
+
+    }
+
+
+
+    isPopupVisible: boolean = false;
+
+openPopup() {
+  this.isPopupVisible = true;
+  document.body.style.overflow = 'hidden'; // Prevent scrolling of the body content
+}
+
+closePopup() {
+  this.isPopupVisible = false;
+  document.body.style.overflow = 'auto'; // Enable scrolling of the body content
+}
+
 
 }
 

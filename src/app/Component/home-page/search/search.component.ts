@@ -10,7 +10,6 @@ import { UnitService } from 'src/app/unit/Services/unit.service';
 import { map, startWith } from 'rxjs/operators';
 
 
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { ICategory } from 'src/app/unit/Models/icategory';
 
 

@@ -3,6 +3,7 @@ import { Profile } from '../../Models/profile';
 import { ProfileService } from '../../Services/profile.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService,
     private route: ActivatedRoute,
+    private toaster:ToastrService,
     private router: Router)
   {
     this.profileForm = new FormGroup({
@@ -106,10 +108,12 @@ export class ProfileComponent implements OnInit {
   UpdateProfile(): void {
     this.profileService.updateProfile(this.profileDetails).subscribe({
       next: (response) => {
+        this.toaster.success('تم تعديل البيانات بنجاح')
         this.profileDetails = response;
         window.location.reload();
       },
       error: (error) => {
+        this.toaster.error('عفوا حدث خطأ يرجي الحماولة في وقت لاحق ')
         console.error('Error updating profile:', error);
         console.log('Error message:', error.message);
         console.log('Validation errors:', error.error.errors);
@@ -119,7 +123,6 @@ export class ProfileComponent implements OnInit {
 
 
 
-  ////// Fun to type Age From Birthday /////////////
   calculateAge(birthdate: Date): number {
     const today = new Date();
     const birthDate = new Date(birthdate);
