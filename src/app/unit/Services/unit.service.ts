@@ -44,7 +44,14 @@ export class UnitService {
     }
 
     getFavorites(){
-      return this.http.get<Favorites[]>(this.baseUrl+"Favorite/getFavorites/"+localStorage.getItem('token'));
+      return this.http.get<any[]>(this.baseUrl+"Favorite/getFavorites/"+localStorage.getItem('token'));
+    }
+    getAllFavorites(pageNumber:number,pageSize:number):Observable<any>{
+      const params = new HttpParams()
+      .set('userID',localStorage.getItem('token')!)
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+      return this.http.get<any[]>(this.baseUrl+"Favorite/getAllFavoriteUnitsByUserID/",{params});
     }
     addFavorites(unitId:number){
       return this.http.post(this.baseUrl+"Favorite/"+localStorage.getItem('token'),unitId);
