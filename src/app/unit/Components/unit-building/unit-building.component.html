@@ -6,12 +6,10 @@
       <br>
       <div class="container" style="text-align: start;margin-right: 5%;">
         <h2 style=" font-weight: bolder; text-align: start;"> {{title}}</h2>
-        <div class="card co1-3" style="width: 18rem; display: inline-flex;"
-          *ngFor="let unit of UnitBuildBysearch">
+        <div class="card co1-3" style="width: 18rem; display: inline-flex;" *ngFor="let unit of UnitBuildBysearch">
 
           <a href="unit/det/{{unit.id}}">
             <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
-
           </a>
           <div class="card-body">
             <a [href]="['unit/det/'+unit.id]">
@@ -72,8 +70,8 @@
 
 <!-- ////////////////////city///////// -->
 
-<div *ngIf="UnitBuildBycity.length>0">
-  <div class="container-fluid" *ngIf="onecity != null">
+<div *ngIf="cityonlyy">
+  <div class="container-fluid" *ngIf="onecity">
     <fieldset>
       <legend style="text-align: center;">
 
@@ -94,11 +92,13 @@
       </legend>
     </fieldset>
   </div>
+
   <fieldset>
     <legend style="text-align: end;">
+
+
       <div class="container" style="text-align: start;margin-right: 5%;">
-        <div class="card co1-3" style="width: 18rem; display: inline-flex;"
-          *ngFor="let unit of UnitBuildBycity">
+        <div class="card co1-3" style="width: 18rem; display: inline-flex;" *ngFor="let unit of UnitBuildBycity">
           <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
           <div class="card-body">
@@ -152,11 +152,11 @@
 <!-- /////////////////////category///////////////////// -->
 
 
-<div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length==0 ">
+<div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length > 2 ">
   <br>
   <br>
   <br>
-  <div style="text-align: center; font-weight: bolder; font-size: 7rem;" class="h2">لا يوجد بيانات</div>
+  <div style=" text-align: center; font-weight: bolder; font-size: 7rem;" class="h2">لا يوجد بيانات</div>
   <img src="../../../../assets/Images/notFound.jpg" style="margin-right: 25%;" width="50%" height="500px" alt=""
     srcset="">
 </div>
