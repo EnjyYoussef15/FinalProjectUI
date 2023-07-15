@@ -18,7 +18,7 @@ export class UnitCardComponent implements OnInit{
 
   totalCount: number = 0;
   pageNumber: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 4;
   pageElement=0;
   buttonArray:number[]=[] ;
 

@@ -4,7 +4,7 @@
       <br>
       <br>
       <br>
-      <div class="container" style="text-align: start;margin-right: 5%;">
+      <div class="container" style="text-align: start;margin-right: 10%;">
         <h2 style=" font-weight: bolder; text-align: start;"> {{title}}</h2>
         <div class="card co1-3" style="width: 18rem; display: inline-flex;" *ngFor="let unit of UnitBuildBysearch">
 
@@ -95,8 +95,6 @@
 
   <fieldset>
     <legend style="text-align: end;">
-
-
       <div class="container" style="text-align: start;margin-right: 5%;">
         <div class="card co1-3" style="width: 18rem; display: inline-flex;" *ngFor="let unit of UnitBuildBycity">
           <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
@@ -152,7 +150,7 @@
 <!-- /////////////////////category///////////////////// -->
 
 
-<div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length > 2 ">
+<div class="container" *ngIf="UnitBuildBycity.length==0 && !area">
   <br>
   <br>
   <br>

@@ -1,6 +1,6 @@
-label{
+/* label{
   height: 31px;
-}
+} */
 
 *{
   color: black;
@@ -38,7 +38,7 @@ a{
   text-decoration: none;
   color: white;
 }
-.kFfIVJ {
+/* .kFfIVJ {
   position: relative;
   background-color: white;
   border: 1px solid rgb(176, 176, 176);
@@ -55,4 +55,8 @@ a{
   min-width: 160px;
   height: 55px;
   gap: 4px;
+} */
+
+.mat-mdc-form-field-type-mat-select.mat-form-field-appearance-fill .mat-mdc-floating-label {
+  max-width: calc(128%  - 18px) ;
 }

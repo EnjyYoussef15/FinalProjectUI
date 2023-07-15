@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit
     });
 
     this.filteredOptions = this.cityControl.valueChanges.pipe(
-
       map(value=> value!= null ? this._filter(value) : null ));
 
       this.getData();

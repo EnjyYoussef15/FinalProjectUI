@@ -2,10 +2,11 @@
 .cat {
   background-color: antiquewhite;
   border-radius: 50px;
-  border: 1px #a8a8a8 ;
+  border: 2px #a8a8a8 ;
   margin-left: 6px;
   float: right;
   width: 16%;
+  /* height: 185px; */
   border-style: dashed;
 }
 .cat:hover{

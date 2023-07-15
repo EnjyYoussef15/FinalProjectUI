@@ -8,7 +8,8 @@
         <h2 style="font-size: 35px; color: white;">أبحث عن منزلك الجديد</h2>
         <p style="color: white;">هنا يمكنك المقارنه وايجاد العديد من الاقتراحات تبعا لأولوياتك</p>
 
-        <form class="container" action="" style="background-color:#e2e2e2; padding-top: 20px; padding-bottom: -10px; border-radius: 15px;">
+        <form class="container" action=""
+          style="background-color:#e2e2e2; padding-top: 20px; padding-bottom: -10px; border-radius: 15px;">
           <div class="row">
             <!-- <button class="btn text-light-emphasis col-2" type="submit">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="100" fill="orange" class="bi bi-search"
@@ -17,7 +18,7 @@
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
               </svg></button> -->
 
-            <mat-form-field class="col-2">
+            <mat-form-field class="col-3">
               <mat-label>تصنيف الوحدة</mat-label>
               <mat-select [(value)]="UnitTypeselected" [formControl]="unitControl">
                 <!-- <mat-option>--</mat-option> -->
@@ -41,7 +42,7 @@
             </mat-form-field>
 
             &nbsp;
-            <mat-form-field class="col-3">
+            <mat-form-field class="col-2">
               <mat-label style="bottom: 15px;">المساحه</mat-label>
               <mat-select [(value)]="UnitAreaselected" [formControl]="areaControl">
                 <!-- <mat-option>--</mat-option> -->
@@ -54,9 +55,9 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field class="col-3">
-              <input matInput class="btn rounded" style="border-color: black;" placeholder="Search for a Government" [matAutocomplete]="auto" [formControl]="cityControl">
-              <input matInput placeholder="أبحث في المحافظات" [matAutocomplete]="auto" [formControl]="cityControl"
-                (change)="onGovernorateChange($event)">
+              <!-- <input matInput class="btn rounded" style="border-color: black;"  [matAutocomplete]="auto" [formControl]="cityControl"> -->
+              <input type="text" matInput placeholder="أبحث في المحافظات" [matAutocomplete]="auto"
+                [formControl]="cityControl" (change)="onGovernorateChange($event)">
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
                 <mat-option *ngFor="let option of jsonData" [value]="option.governorate_name_ar">
                   {{ option.governorate_name_ar }}
@@ -69,10 +70,10 @@
             width: 15%;" type="submit">
               <a *ngIf="!UnitTypeselectedOption && !UnitAreaselectedOption && !UnitPRICEselectedOption"
                 href="/unit/Allunits/{{cityselectedOption}}">
-                Search </a>
+                بحث <i class="fa fa-search" aria-hidden="true" style="color: white;"></i></a>
               <a *ngIf="UnitTypeselectedOption || UnitAreaselectedOption || UnitTypeselectedOption"
                 href="/unit/Allunits/{{UnitAreaselectedOption}}/{{UnitTypeselectedOption}}/{{UnitPRICEselectedOption}}/{{cityselectedOption}}">
-                Search </a>
+                بحث <i class="fa fa-search" aria-hidden="true" style="color: white;"></i></a>
             </button>
           </div>
 

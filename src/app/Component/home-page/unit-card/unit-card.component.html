@@ -1,7 +1,6 @@
 <div class="container" style="text-align: start;margin-right: 10%;">
   <h2 style=" font-weight: bolder; text-align: start;">أحدث الوحدات</h2>
-  <div class="card col-3" style="width: 18rem; display: inline-flex;"
-    *ngFor="let unit of unitCard">
+  <div class="card col-3" style="width: 16rem; display: inline-flex;" *ngFor="let unit of unitCard">
     <a href="unit/det/{{unit.id}}">
       <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">
 
@@ -52,14 +51,16 @@
 </div>
 <div class="mt-8 py-5 flex justify-content items-center" style="text-align: center;">
   <div>
-    <button class="btn btn-light" (click)="previousPage()" style="color: orange; font-weight: bold;" [class.disabled]="pageNumber===1">
+    <button class="btn btn-light" (click)="previousPage()" style="color: orange; font-weight: bold;"
+      [class.disabled]="pageNumber===1">
       <i class="fa fa-forward"></i></button>
 
     <button class="btnNumber rounded" (click)="setPage(index)" *ngFor="let index of buttonArray"
-    [style.color]="index === pageNumber ? 'white' : 'black'"
-    [style.background-color]="index === pageNumber ? '#d8832c' : 'initial'">{{index}}</button>
+      [style.color]="index === pageNumber ? 'white' : 'black'"
+      [style.background-color]="index === pageNumber ? '#d8832c' : 'initial'">{{index}}</button>
 
-    <button class="btn btn-light" (click)="nextPage()" style="color: orange;" [disabled]="pageNumber * pageSize >= totalCount">
+    <button class="btn btn-light" (click)="nextPage()" style="color: orange;"
+      [disabled]="pageNumber * pageSize >= totalCount">
       <i class="fa fa-backward"></i></button>
 
   </div>
