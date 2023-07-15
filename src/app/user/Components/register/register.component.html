@@ -11,8 +11,8 @@
             placeholder="الاسم"
             [ngClass]="{'is-invalid': userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid}">
           <span class="invalid-feedback" *ngIf="userForm.get('FullName')?.touched && userForm.get('FullName')?.invalid">
-            <span *ngIf="userForm.get('FullName')?.errors?.['required']">Please Enter the Name</span>
-            <span *ngIf="userForm.get('FullName')?.errors?.['minlength']">Name must be at least 8 characters long</span>
+            <span *ngIf="userForm.get('FullName')?.errors?.['required']">من فضلك ادخل الإسم</span>
+            <span *ngIf="userForm.get('FullName')?.errors?.['minlength']">يجب أن يحتوي الإسم علي الأقل علي (8) حروف</span>
           </span>
         </div>
 
@@ -20,8 +20,8 @@
           <input type="email" class="form-control" id="email" name="Email" formControlName="Email" placeholder="الإيميل"
             [ngClass]="{'is-invalid': userForm.get('Email')?.touched && userForm.get('Email')?.invalid}">
           <span class="invalid-feedback" *ngIf="userForm.get('Email')?.touched && userForm.get('Email')?.invalid">
-            <span *ngIf="userForm.get('Email')?.errors?.['required']">Please Enter an Email</span>
-            <span *ngIf="userForm.get('Email')?.errors?.['email']">Please Enter a valid Email</span>
+            <span *ngIf="userForm.get('Email')?.errors?.['required']">من فضلك ادخل الإيميل الخاص بك</span>
+            <span *ngIf="userForm.get('Email')?.errors?.['email']">اكتب الإيميل صحيحاً</span>
           </span>
         </div>
 <!-- <div class="mb-3">
@@ -42,7 +42,7 @@
             placeholder="اكتب كلمة مرور معقدة مثل (Aaaa66!@#$%&*)"
             [ngClass]="{'is-invalid': userForm.get('Password')?.touched && userForm.get('Password')?.invalid}">
           <span class="invalid-feedback" *ngIf="userForm.get('Password')?.touched && userForm.get('Password')?.invalid">
-            <span *ngIf="userForm.get('Password')?.errors?.['required']">Please Enter a Password</span>
+            <span *ngIf="userForm.get('Password')?.errors?.['required']">ادخل الرقم السرى</span>
           </span>
         </div>
 
@@ -51,7 +51,7 @@
             placeholder="العنوان"
             [ngClass]="{'is-invalid': userForm.get('Address')?.touched && userForm.get('Address')?.invalid}">
           <span class="invalid-feedback" *ngIf="userForm.get('Address')?.touched && userForm.get('Address')?.invalid">
-            <span *ngIf="userForm.get('Address')?.errors?.['required']">Please Enter the Address</span>
+            <span *ngIf="userForm.get('Address')?.errors?.['required']">من فضلك ادخل العنوان</span>
           </span>
         </div>
 
@@ -61,7 +61,8 @@
             [ngClass]="{'is-invalid': userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid}">
           <span class="invalid-feedback"
             *ngIf="userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid">
-            <span *ngIf="userForm.get('PhoneNumber')?.errors?.['required']">Please Enter the Phone Number</span>
+            <span *ngIf="userForm.get('PhoneNumber')?.errors?.['required']">من فضلك ادخل رقم الهاتف</span>
+            <span *ngIf="userForm.get('PhoneNumber')?.errors?.['pattern']">يجب أن يبدأ رقم الهاتف بـ (010 - 011 - 012 - 015)</span>
           </span>
         </div>
 
@@ -71,7 +72,7 @@
             [ngClass]="{'is-invalid': userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid}">
           <span class="invalid-feedback"
             *ngIf="userForm.get('BirthDate')?.touched && userForm.get('BirthDate')?.invalid">
-            <span *ngIf="userForm.get('BirthDate')?.errors?.['required']">Please Enter the Birth Date</span>
+            <span *ngIf="userForm.get('BirthDate')?.errors?.['required']">من فضلك ادخل تاريخ الميلاد</span>
           </span>
         </div>
 
