@@ -143,10 +143,13 @@ main .footer input{
   color: #131313;
   font-size: 14px;
   font-weight: bold;
+  resize: vertical;
+
 }
 main .footer textarea::placeholder{
   color:#ddd;
 }
+
 
 main .footer a{
   text-decoration:none;

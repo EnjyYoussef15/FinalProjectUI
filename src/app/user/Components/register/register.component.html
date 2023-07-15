@@ -44,7 +44,7 @@
         </div>
 
         <div class="mb-3">
-          <input type="tel" class="form-control" id="phone" name="PhoneNumber" formControlName="PhoneNumber"
+          <input type="tel" class="form-control" pattern="01[0125]\d{8}" maxlength="11" id="phone" name="PhoneNumber" formControlName="PhoneNumber"
             placeholder="رقم الهاتف"
             [ngClass]="{'is-invalid': userForm.get('PhoneNumber')?.touched && userForm.get('PhoneNumber')?.invalid}">
           <span class="invalid-feedback"
