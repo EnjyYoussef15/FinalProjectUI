@@ -108,7 +108,7 @@ export class ProfileComponent implements OnInit {
   UpdateProfile(): void {
     this.profileService.updateProfile(this.profileDetails).subscribe({
       next: (response) => {
-        this.toaster.success('تم تعديل البيانات بنجاح')
+        // this.toaster.success('تم تعديل البيانات بنجاح')
         this.profileDetails = response;
         window.location.reload();
       },

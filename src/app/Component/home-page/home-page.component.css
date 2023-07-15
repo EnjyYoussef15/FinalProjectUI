@@ -10,8 +10,9 @@
   font-size: 20px;
 }
 .carsol img{
-  width: 100%; height: 615px;
+  width: 100%; height: 500px !important;
 }
+
 .import .col-4 {
   flex: 0 0 auto;
   width: 33.33333333%;
