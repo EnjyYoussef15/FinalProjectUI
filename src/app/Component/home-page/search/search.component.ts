@@ -112,11 +112,12 @@ onGovernorateChange(event:any): void
 
   areaControl = new FormControl<number|null>(null, Validators.required);
   area= [
-    {value: 60, label: "م60 :80م"},
-    {value: 80, label: "م80 :100م"},
-    {value: 100, label: "م100 :120م"},
-    {value: 120, label: "م120 :150م"},
-    {value: 150, label: " اكثر من 150م"},
+    {value: 80, label: "م60 :80م"},
+    {value: 100, label: "م80 :100م"},
+    {value: 120, label: "م100 :120م"},
+    {value: 150, label: "م120 :150م"},
+    {value: 200, label: "م150 :200م"},
+    {value: 300, label: "اكثر من 200م"},
 
   ];
   UnitCityselected?:number;

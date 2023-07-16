@@ -79,9 +79,6 @@
 
         <div class="row">
           <div>
-
-            <br>
-            <br>
             <a href="/unit/Allunits/{{onecity.cityName}}"> <img src="{{onecity.cityImage}}" alt="..." width="100%"
                 height="400"></a>
             <div class="buildinfo">
@@ -152,7 +149,7 @@
 <!-- /////////////////////category///////////////////// -->
 
 
-<div class="container" *ngIf="UnitBuildBycity.length==0 && !area">
+<div class="container" *ngIf="UnitBuildBycity.length==0 && UnitBuildBysearch.length==0">
   <br>
   <br>
   <br>
