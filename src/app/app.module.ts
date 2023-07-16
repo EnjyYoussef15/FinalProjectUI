@@ -41,6 +41,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { ToastrModule } from 'ngx-toastr';
+import { DatetimeFormatPipe } from './Pipes/datetime-format.pipe';
 
 
 
@@ -56,6 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     CategoryComponent,
     CityComponent,
     SearchComponent,
+    DatetimeFormatPipe,
 
   ],
 

@@ -26,12 +26,12 @@
 
       <br>
       <br>
-      <form action="">
+      <form class="row g-3" #form="ngForm" (ngSubmit)="makeMeeting(offer)">
       <div class="mb-3">
         <label for="date">تحدد موعد المقابلة</label>
         <input type="datetime-local" class="form-control" id="date" name="meetingDate" [(ngModel)]="meetinDate" placeholder="موعد المقابلة">
       </div>
-      <button type="button" style="background-color: #a8a8a8; color: white; font-weight: bold;" class="btn"
+      <button type="submit" style="background-color: #a8a8a8; color: white; font-weight: bold;" class="btn"
       > تأكيد</button>
       </form>
 

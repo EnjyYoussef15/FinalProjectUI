@@ -126,7 +126,7 @@
           </div>
           <br>
           <div class=" col-3">
-            <button [disabled]="!token" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3">
+            <button [disabled]="!token|| token==unitDetails.ownerID" style="background-color: #FF8000; color: white;" type="submit" class="btn mb-3">
               تأكيـــد</button>
           </div>
           <div class="col-8" *ngIf="unitDetails.priceType == 1">

@@ -6,6 +6,7 @@ import { ChatService } from 'src/app/chat/Services/chat.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
 import { Meetings } from 'src/app/Component/home-page/NotificatioModel/notifications';
+import { MeetingService } from 'src/app/meetin/Services/meeting.service';
 
 @Component({
   selector: 'app-offers',
@@ -21,7 +22,7 @@ this.getUsersFromFirebase().then(()=>{
   this.updateNotifications();
 });
   }
-   constructor(private notificationServices:NotificationsService,private route:ActivatedRoute,private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
+   constructor(private meetingServices:MeetingService, private notificationServices:NotificationsService,private route:ActivatedRoute,private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
 
    getOffers(){
     this.offerService.getOffers().subscribe({
@@ -128,7 +129,8 @@ makeMeeting(offer:Offer){
     unitID:offer.unitBuildingID,
     stuts:false
   }
-
+this.meetingServices.addMeeting(meeing);
+console.log("Meeting ======== >>>> ",meeing);
 
 }
 
