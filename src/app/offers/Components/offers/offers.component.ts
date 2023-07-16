@@ -5,6 +5,7 @@ import { Chat, UsersFire } from 'src/app/chat/Models/chat';
 import { ChatService } from 'src/app/chat/Services/chat.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
+import { Meetings } from 'src/app/Component/home-page/NotificatioModel/notifications';
 
 @Component({
   selector: 'app-offers',
@@ -113,6 +114,23 @@ closePopup() {
   document.body.style.overflow = 'auto'; // Enable scrolling of the body content
 }
 
+
+meetinDate?:Date;
+
+makeMeeting(offer:Offer){
+  const meeing:Meetings={
+    buyerID:offer.buyerID,
+    date:new Date,
+    meeingDate:this.meetinDate!,
+    offerID:offer.id,
+    meetingDetails:'تم تحديد موعد لمعاينة الوحدة السكنية',
+    ownerID:offer.ownerID,
+    unitID:offer.unitBuildingID,
+    stuts:false
+  }
+
+
+}
 
 }
 

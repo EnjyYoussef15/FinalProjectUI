@@ -23,6 +23,8 @@ export class UnitBuildingComponent implements OnInit  {
 
 @Input() government?: string;
 @Input()  area?: number;
+@Input() unitID?:number;
+@Input() price?:number;
 @Input()  category?: number;
 @Input()  priceType?: TypePrice;
 // @Input() cityonlyy?:string;
@@ -60,7 +62,12 @@ export class UnitBuildingComponent implements OnInit  {
       this.government = params.get('government')!;
       this.area =Number( params.get('area'))!;
       this.category =Number( params.get('category'))!;
-      this.priceType =Number( params.get('pricetype'))!; });
+      this.priceType =Number( params.get('pricetype'))!;
+      this.price =Number( params.get('price'))!;
+      this.unitID =Number( params.get('unitID'))!;
+
+      this.getSuggestionComponent();
+     });
 
 
       this.service.getbySearch(this.area,this.category,this.priceType,this.government).subscribe
@@ -128,6 +135,15 @@ console.log("ButtonToArray",this.buttonArray);
 
   }
 );
+}
+
+getSuggestionComponent(){
+  this.service.getSuggesstions(this.unitID!,this.area!,this.price!,this.government!).subscribe({
+    next:(units)=>{
+      console.log("Suggestions Units ===>>>> ",units);
+      this.UnitBuildBysearch=units;
+    }
+  });
 }
 
   togleFavorites(id:number){

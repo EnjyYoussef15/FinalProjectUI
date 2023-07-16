@@ -189,7 +189,7 @@ this.myForm.reset();
     //   email: '',
     //   massage:'',
     //   phone:''};
-this.toaster.success('تم إرسال طلبك بنجاح سيتم التواصل معك من خلال الشركة')
+this.toaster.success('تم إرسال طلبك بنجاح سيتم التواصل معك من خلال الشركة');
 
 }
 else{

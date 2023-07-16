@@ -10,6 +10,7 @@ import { UnitCard } from '../../Models/unit-card';
 import { Favorites } from '../../Models/favorites';
 import { NotificationsService } from 'src/app/Services/Notifications/notifications.service';
 import { Notifications } from 'src/app/Component/home-page/NotificatioModel/notifications';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class UnitDetailsComponent implements OnInit{
   }
 
 
+
 unitID:any;
     unitDetails: UnitDetails = {
       ownerID:'',
@@ -60,7 +62,7 @@ unitID:any;
 title?:string;
 cityonlyy?: string;
     selectedImage: String = '';
-    constructor(private unitservice: UnitService,private route: ActivatedRoute,
+    constructor(private unitservice: UnitService,private route: ActivatedRoute,private toaster:ToastrService,
        private offerservice : OffersService,private notificationServices:NotificationsService){
 
        }
@@ -107,6 +109,7 @@ this.cityonlyy=this.unitDetails.governamnet;
 
   addOfferComponent() {
 
+
           if (this.token) {
         this.addedOffer.buyerID = this.token;
       }
@@ -123,7 +126,7 @@ this.cityonlyy=this.unitDetails.governamnet;
             userId:this.addedOffer.ownerID
           }
 this.notificationServices.sendNotification(notification)
-          alert("Added offer"),
+this.toaster.success('تم إرسال العرض بنجاح في انتظار رد المالك');
           this.addedOffer.message = '';
           this.addedOffer.price = 0;
         },

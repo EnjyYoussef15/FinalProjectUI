@@ -93,4 +93,13 @@ export class UnitService {
   }
 
 
+  getSuggesstions(unitID:number,area:number,price:number,gover:string){
+    const params={
+      'unitID':unitID,
+      'area':area,
+      'price':price,
+      'gover':gover
+    }
+    return this.http.get<any[]>("http://localhost:5219/api/Unit/suggestions/"+unitID+'/'+area+'/'+price+'/'+gover);
+  }
 }

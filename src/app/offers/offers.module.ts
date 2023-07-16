@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { userAuthGGuard } from '../user/Guird/user-auth-g.guard';
 import { OffersComponent } from './Components/offers/offers.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const routes:Routes=[
   {path:'offers/:id',component:OffersComponent,canActivate:[userAuthGGuard]}
@@ -16,6 +17,7 @@ const routes:Routes=[
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ]
 })

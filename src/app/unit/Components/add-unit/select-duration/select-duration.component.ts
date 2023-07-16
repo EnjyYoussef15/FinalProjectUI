@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MenuPrice } from 'src/app/unit/Models/menu-price';
 import { UpdateDuration } from 'src/app/unit/Models/update-duration';
 import { UnitService } from 'src/app/unit/Services/unit.service';
@@ -19,7 +20,7 @@ export class SelectDurationComponent implements OnInit {
     unitType:0
   }
 
-  constructor(private route:ActivatedRoute,private services:UnitService,private router:Router){
+  constructor(private toaster:ToastrService,private route:ActivatedRoute,private services:UnitService,private router:Router){
     this.route.paramMap.subscribe(params => {
       this.childData = params.get('data');
       console.log('Received data:', this.childData);
@@ -44,7 +45,7 @@ key:'pk_test_51NQqY6BHX9IMV6cJr9UySZzahQLxCnL9aEVVyTYNdMXDWUDlyOSaFRVLVu5mPvICI2
 locale:'auto',
 token:(stripeoken:any)=>{
   console.log(stripeoken.card);
-  alert("تمت عملية الدفع بنجاح");
+this.toaster.success('تمت عملية الدفع بنجاح')
   this.setDurationComponent();
 }
     });
@@ -69,7 +70,7 @@ token:(stripeoken:any)=>{
     this.services.setDuration(this.updateDuration).subscribe({
       next:(value)=>{
         console.log(value);
-        alert("بانتظار المراجعة");
+this.toaster.info('بإنتظار مراجعة البيانات')
         this.router.navigate(['homepage']);
       }
     });

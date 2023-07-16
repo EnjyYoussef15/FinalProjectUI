@@ -140,3 +140,39 @@ overflow: hidden;
   text-align: start;
   margin: 0;
 }
+
+
+
+
+.meeting{
+  /* display: flex; */
+  position: absolute;
+  overflow-y: auto; /* Enable vertical scroll */
+  overflow-x: hidden; /* Hide horizontal scroll if not needed */
+  scroll-behavior: initial ;
+  max-width: 400px;
+   max-height: 400px;
+   top: 70px;
+   left: 250px;
+   background-color: white;
+  padding: 12px 8px 0 8px;
+  min-width: 200px;
+  min-height: 200px;
+border: solid 1px #D8832C;
+  border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+border-top-right-radius: 20px;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+}
+.meeting-item{
+display: block;
+width: 100%;
+overflow: hidden;
+}
+.meeting-item p{
+  font-size: 14px;
+  padding: 5px;
+  line-height: 1.5;
+  text-align: start;
+  margin: 0;
+}
