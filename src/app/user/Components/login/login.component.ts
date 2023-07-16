@@ -39,6 +39,7 @@ loginForm:FormGroup;
     this.servces.login(this.user).subscribe(success => {
       if (success) {
         this.router.navigate(['/homePage']);
+        window.location.reload();
         console.log('Login successful');
       } else {
         console.log('Login failed');
