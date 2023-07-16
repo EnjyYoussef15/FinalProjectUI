@@ -11,9 +11,6 @@ import { UnitService } from 'src/app/unit/Services/unit.service';
   styleUrls: ['./all-units-category.component.css']
 })
 export class AllUnitsCategoryComponent implements OnInit {
-
-
-
   pCard:number=1;
   itemsPerPageCard:number=4;
   totalItemsCard:any;
@@ -27,7 +24,7 @@ export class AllUnitsCategoryComponent implements OnInit {
 
       this.getAllUnitsCategories(id);
 
-
+this.getFavorites();
 
   }
   UnitBuildByCategory?:ICategoryWithBuilding;

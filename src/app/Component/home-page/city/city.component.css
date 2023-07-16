@@ -132,3 +132,15 @@ hr {
 .f div{
   width: 33%;
 }
+
+
+.btnNumber{
+  color: #131313;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 10px;
+}
+

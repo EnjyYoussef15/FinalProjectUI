@@ -9,9 +9,12 @@ import { UnitService } from 'src/app/unit/Services/unit.service';
 })
 export class CityComponent implements OnInit{
   city:City[]=[];
-  pCity:number=1;
-  itemsPerPageCity:number=3;
-  totalItemsCity:any;
+  totalCount: number = 0;
+  pageNumber: number = 1;
+  pageSize: number = 3;
+  pageElement=0;
+  buttonArray:number[]=[] ;
+
 
   constructor(private services:UnitService){}
 ngOnInit(): void {
@@ -19,12 +22,41 @@ ngOnInit(): void {
 }
 
 getCitiesComponent(){
-this.services.getCities().subscribe({
-  next:(value)=>{
-    this.city=value;
-    console.log("City",this.city);
-this.totalItemsCity=this.city.length;
+this.services.getCities(this.pageNumber,this.pageSize).subscribe({
+  next:(response)=>{
+    this.city = response.data;
+    this.totalCount = response.totalCount;
+    console.log("TotalCount City=======>>> ",this.totalCount);
+    console.log("Count cITY====>>> ",this.pageElement);
+
+    this.pageElement=Math.floor(this.totalCount/this.pageSize)+(this.totalCount%this.pageSize>0?1:0);
+
+this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
+console.log("ButtonToArray cITY ====>>>",this.buttonArray);
   }
 });
 }
+
+
+
+
+previousPage() {
+  if (this.pageNumber > 1) {
+    this.pageNumber--;
+    this.getCitiesComponent();
+  }
+}
+
+nextPage() {
+  if (this.pageNumber * this.pageSize < this.totalCount) {
+    this.pageNumber++;
+    this.getCitiesComponent();
+  }
+}
+
+setPage(pnumber:number){
+  this.pageNumber=pnumber;
+  this.getCitiesComponent();
+}
+
 }

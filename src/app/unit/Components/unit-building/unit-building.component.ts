@@ -34,7 +34,11 @@ export class UnitBuildingComponent implements OnInit  {
 
   UnitBuildBysearch :UnitCard[]=[];
   UnitBuildBycity :UnitCard[]=[];
-
+  totalCount: number = 0;
+  pageNumber: number = 1;
+  pageSize: number = 3;
+  pageElement=0;
+  buttonArray:number[]=[] ;
 
 
   errorMessage:string ='';
@@ -95,21 +99,35 @@ export class UnitBuildingComponent implements OnInit  {
     });
 
     this.getFavorites();
+    this.pageElement=this.totalCount/this.pageSize;
+this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
+console.log("ButtonToArray",this.buttonArray);
 
 }
 
   city:City[]=[];
   onecity?:City;
 
+
+
   getCitiesComponent(s?: string){
-  this.service.getCities().subscribe({
-    next:(value)=>{
-    this.city=value;
+  this.service.getCities(this.pageNumber,this.pageSize).subscribe(response => {
+    this.city = response.data;
+    this.totalCount = response.totalCount;
+    console.log("TotalCount",this.totalCount);
+    console.log("Count",this.pageElement);
+
+    this.pageElement=Math.floor(this.totalCount/this.pageSize)+(this.totalCount%this.pageSize>0?1:0);
+
+this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
+console.log("ButtonToArray",this.buttonArray);
+
     this.onecity= this.city.find(m=>m.cityName==s);
     console.log("City", this.city.find(m=>m.cityName==s));
     console.log(this.onecity);
+
   }
-});
+);
 }
 
   togleFavorites(id:number){

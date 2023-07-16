@@ -64,9 +64,12 @@ export class UnitService {
       return this.http.get<UnitDetails>(this.baseUrl+"Unit/getUnit/"+unitID);
     }
 
-    getCities()
+    getCities(pageNumber:number,pageSize:number):Observable<any>
     {
-      return this.http.get<City[]>(this.baseUrl+"Unit/getCities");
+      const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+      return this.http.get<any[]>(this.baseUrl+"Unit/getCities",{params});
     }
 
     getbySearch(area?:number,category?:number,pricetype?:TypePrice,government?:string):Observable<UnitCard[]>
