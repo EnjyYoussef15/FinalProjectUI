@@ -27,10 +27,12 @@ this.services.getCities(this.pageNumber,this.pageSize).subscribe({
     this.city = response.data;
     this.totalCount = response.totalCount;
     console.log("TotalCount City=======>>> ",this.totalCount);
-    console.log("Count cITY====>>> ",this.pageElement);
 
     this.pageElement=Math.floor(this.totalCount/this.pageSize)+(this.totalCount%this.pageSize>0?1:0);
+    console.log("DIVISION===>>" , Math.floor(this.totalCount/this.pageSize));
+    console.log("pAGEsIZE===>>" , (this.totalCount%this.pageSize>0?1:0));
 
+    console.log("Count cITY====>>> ",this.pageElement);
 this.buttonArray= Array(this.pageElement).fill(0).map((_, index) => index + 1);
 console.log("ButtonToArray cITY ====>>>",this.buttonArray);
   }
