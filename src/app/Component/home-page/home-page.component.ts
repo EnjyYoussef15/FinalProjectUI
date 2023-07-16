@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -34,7 +35,7 @@ const listAnimation = trigger('listAnimation', [
 })
 export class HomePageComponent implements OnInit ,OnDestroy {
 
-  constructor( private router:Router,private sanitizer: DomSanitizer )
+  constructor( private router:Router,private sanitizer: DomSanitizer,private toaster:ToastrService )
   {
 
   }
@@ -188,7 +189,7 @@ this.myForm.reset();
     //   email: '',
     //   massage:'',
     //   phone:''};
-    this.showMessage=true;
+this.toaster.success('تم إرسال طلبك بنجاح سيتم التواصل معك من خلال الشركة')
 
 }
 else{
