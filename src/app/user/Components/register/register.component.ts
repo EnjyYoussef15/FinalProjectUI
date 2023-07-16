@@ -44,7 +44,6 @@ userForm:FormGroup;
     this.servces.register(this.user).subscribe({
       next:(user)=>{
         this.toastr.success('مرحبا بك في عائلة سكني تم تسجيل الدخول بنجاح');
-        window.location.reload();
         this.router.navigate(['/user/verify']);
       },
       error:(err)=> {
