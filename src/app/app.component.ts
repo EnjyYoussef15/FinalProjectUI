@@ -117,8 +117,8 @@ getMeetings(){
         this.meetings.push(documentData);
         this.meetingsID.push(documentId);
 
-        if (!documentData.starus) {
-          this.count++;
+        if (!documentData.stuts) {
+          this.meetingCount++;
         }
 
         console.log("Meeting ===>>> ", this.meetings);

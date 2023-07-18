@@ -26,14 +26,22 @@
 
       <br>
       <br>
-      <form class="row g-3" #form="ngForm" (ngSubmit)="makeMeeting(offer)">
-      <div class="mb-3">
-        <label for="date">تحدد موعد المقابلة</label>
-        <input type="datetime-local" class="form-control" id="date" name="meetingDate" [(ngModel)]="meetinDate" placeholder="موعد المقابلة">
+      <div *ngIf="!checkMeeting(offer.id)">
+        <form class="row g-3" #form="ngForm" (ngSubmit)="makeMeeting(offer)">
+          <div>
+            <label for="date">تحدد موعد المقابلة</label>
+            <input type="datetime-local" class="form-control" id="date" name="meetingDate" [(ngModel)]="meetinDate" placeholder="موعد المقابلة">
+          </div>
+          <button type="submit" [disabled]="meetinDate==null" style="background-color: #ff8000; color: white; font-weight: bold;" class="btn"
+          > تأكيد</button>
+          </form>
       </div>
-      <button type="submit" style="background-color: #a8a8a8; color: white; font-weight: bold;" class="btn"
-      > تأكيد</button>
-      </form>
+
+      <div class="h5" style="font-weight: bolder;" *ngIf="checkMeeting(offer.id)">
+       موعد المعاينة :  <span style="font-size: 16px; font-weight: bold;">
+      {{getMeeting(offer.id) | dateformate: 'dd/MM/yyyy' }}
+      </span>
+      </div>
 
   </div>
 </div>

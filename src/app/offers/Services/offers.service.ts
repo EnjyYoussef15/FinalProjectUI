@@ -12,13 +12,16 @@ export class OffersService {
 return this.http.get<Offer[]>(this.baseUrl+"/"+localStorage.getItem('token'));
   }
 
+  getOffer(offerID:number){
+    return this.http.get<Offer>(this.baseUrl+"/getOffer/"+offerID);
+      }
+
   deleteOffer(offerID:any){
     return this.http.delete<Offer>(this.baseUrl+"/"+offerID);
   }
 
   addOffer(offer:Offer){
     console.log("on Offer Added" , offer)
-
     return this.http.post<Offer>(this.baseUrl,offer);
   }
 }

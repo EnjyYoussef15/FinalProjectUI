@@ -135,26 +135,6 @@ this.toaster.success('تم إرسال العرض بنجاح في انتظار ر
     }
 
 
-    ////////// For Offers///////////////
-    // addOfferComponent() {
-    //   // const token = localStorage.getItem('token');
-
-    //   if (this.token) {
-    //     this.addedOffer.buyerID = this.token;
-    //   }
-
-    //   this.addedOffer.ownerID = this.unitDetails.ownerId
-
-    //   this.offerservice.addOffer(this.addedOffer).subscribe({
-    //     next: (value) => {
-    //       alert("Added offer"),
-    //       this.addedOffer.message = '';
-    //       this.addedOffer.price = 0;
-    //     },
-    //     error: (err) => console.log(err)
-    //   })
-    // }
-
 
 
 }

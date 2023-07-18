@@ -16,10 +16,12 @@ import { MeetingService } from 'src/app/meetin/Services/meeting.service';
 export class OffersComponent implements OnInit{
   users:UsersFire[] = [];
   offers: Offer[] = [];
+  meetings:Meetings[]=[];
   ngOnInit(): void {
 this.getUsersFromFirebase().then(()=>{
   this.getOffers();
   this.updateNotifications();
+  this.getAllMeetings();
 });
   }
    constructor(private meetingServices:MeetingService, private notificationServices:NotificationsService,private route:ActivatedRoute,private offerService: OffersService,private router:Router,private chatServices:ChatService) { }
@@ -134,11 +136,23 @@ console.log("Meeting ======== >>>> ",meeing);
 
 }
 
+getAllMeetings(){
+  this.meetingServices.getAllMettings().subscribe({
+    next:(value)=> {
+        this.meetings = [];
+        value.map((e: any) => {
+          const documentData = e.payload.doc.data();
+          this.meetings.push(documentData);
+        });
+      }
+    });
 }
 
+checkMeeting(id:number):boolean{
+ return this.meetings.some(mess => mess.offerID === id);
+}
 
-
-
-
-
-
+getMeeting(id:number):Date{
+  return this.meetings.find(mess => mess.offerID === id)?.meeingDate!;
+ }
+}
